@@ -2,3 +2,35 @@
 body{
   background-color: #eceeef;
 }
+
+.puntero{
+  cursor: pointer;
+}
+
+.img-item{
+  width: 100%;
+  height: 500px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; 
+}
+
+@media (max-width: 600px) {
+  .img-item {
+    height: 280px;
+  }
+}
+.btn-publicacion-share:hover{
+	color:  green;
+}
+.btn-publicacion-like:hover{
+	color:  red;
+	font-weight: bold;
+}
+.ipublicacion{
+	font-size: 5em;
+}
+.div-card:hover{
+	background-color: #E4E4ED;
+}
