@@ -90,3 +90,13 @@ body{
   top:  110px;
   margin-left: 12px;
 }
+.divFotopeque{
+  display: inline-block;
+}
+.infoCard{
+  display: inline-block;
+  position: relative;
+  font-weight: bold;
+  font-size: 18px;
+  left: 35%;
+}
