@@ -7,7 +7,7 @@ var port = process.env.PORT || 3678;
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.get('/prueba/:nombre?', function(req, res){
+app.get('/prueba/:nombre?', (req, res)=>{
 
 	if(req.params.nombre){
 		var nombre = req.params.nombre;
