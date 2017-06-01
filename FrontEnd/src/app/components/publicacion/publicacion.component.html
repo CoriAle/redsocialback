@@ -5,7 +5,7 @@
 	    <p class="card-text">{{publicacion.contenido}}</p>
 	    <p class="card-text"><small class="text-muted">{{publicacion.fecha}}</small></p>
 	  </div>
-	  <div class="img-item" style="background-image: url('{{publicacion.foto}}')">
+	  <div  *ngIf="publicacion.foto != ''" class="img-item" style="background-image: url('{{publicacion.foto}}')">
 	  
 	  </div>
 	<div class="row">
