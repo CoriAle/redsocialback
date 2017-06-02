@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { NgForm } from '@angular/forms';
+import { Login } from '../../interfaces/login.interface';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,10 +13,10 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent  {
 
-	usuario:Object = {
-		correo: null,
-		pass: null
-	}
+	usuario:Login = {
+		correo: "",
+		pass: ""
+	}////
   constructor(private auth:AuthService) { 
 auth.handleAuthentication();
   }

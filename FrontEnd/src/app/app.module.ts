@@ -13,6 +13,7 @@ import { PublicacionesService } from './services/publicaciones.service';
 import { PerfilusuarioService } from './services/perfilusuario.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { LoginService } from './services/login.service';
 
 import { MiniPerfilComponent } from './components/shared/mini-perfil/mini-perfil.component';
 import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpeque.component';
@@ -61,6 +62,7 @@ import { SeguidosComponent } from './components/seguidos/seguidos.component';
     PublicacionesService,
     PerfilusuarioService,
     AuthService,
+    LoginService,
     AuthGuardService
   ],
   bootstrap: [AppComponent]
