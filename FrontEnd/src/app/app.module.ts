@@ -12,6 +12,7 @@ import { PublicacionComponent } from './components/publicacion/publicacion.compo
 import { PublicacionesService } from './services/publicaciones.service';
 import { PerfilusuarioService } from './services/perfilusuario.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 import { MiniPerfilComponent } from './components/shared/mini-perfil/mini-perfil.component';
 import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpeque.component';
@@ -55,7 +56,8 @@ import { CallbackComponent } from './components/callback/callback.component';
   providers: [
     PublicacionesService,
     PerfilusuarioService,
-    AuthService
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
