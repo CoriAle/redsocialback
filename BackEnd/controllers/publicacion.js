@@ -4,7 +4,7 @@ var Publicacion = require('../models/publicacion');
 
 function getPublicacion(req, res){
 	var publicacionId = req.params.id;
-	Publicacion.findById(publicacionId, function(err,publicacion)// Acá estamos buscando por un Id
+	Publicacion.findById(publicacionId, function(err,publicacion)
 	{
 		if(err)
 		{
@@ -25,8 +25,9 @@ function getPublicacion(req, res){
 }
 
 
-function getPublicaciones(req, res){
-	Publicacion.find({}).sort('-id').exec((err,usuarios)=>//acá está ordenando a través del id
+function getPublicacionespersonas(req, res){
+	var personacreadora= req.params.usuariocreador;
+	Publicacion.find({}).where('usuariocreador').equals(personacreadora).sort('-usuariocreador').exec((err,usuarios)=>//acá está ordenando a través del id
 		{
 			if(err)
 			{
@@ -65,7 +66,14 @@ function savePublicaciones(req, res){
 		}
 		else
 		{
-			res.status(200).send({publicar: publicacionStored});	
+			if(!publicacionStored)
+			{
+				res.status(404).send({message:'No se ha guardado la publicación'});
+			}
+			else
+			{
+			res.status(200).send({publicar: publicacionStored});				
+			}	
 		}
 	}); 
 }
@@ -104,7 +112,7 @@ function deletePublicacion(req, res) {
 
 module.exports = {
 	getPublicacion,
-	getPublicaciones,
+	getPublicacionespersonas,
 	savePublicaciones,
 	deletePublicacion
 }
