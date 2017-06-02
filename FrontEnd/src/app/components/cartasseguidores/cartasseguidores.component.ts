@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class CartasseguidoresComponent implements OnInit {
-
+  valorBoton:string="Siguiendo";
   constructor() { }
 
   ngOnInit() {
   }
-
+  cambiarTexto(){
+    this.valorBoton = "Dejar de seguir";
+  }
+  regresarTexto(){
+    this.valorBoton = "Siguiendo";
+  }
 }
