@@ -18,6 +18,9 @@ import { ComentariosComponent } from './components/comentarios/comentarios.compo
 import { CartasseguidoresComponent } from './components/cartasseguidores/cartasseguidores.component';
 import { HomeComponent } from './components/home/home.component';
 import { UrlPipe } from './pipes/url.pipe';
+import { SeguidoresComponent } from './components/seguidores/seguidores.component';
+import { APP_ROUTING } from './app.routes';
+
 
 
 @NgModule({
@@ -31,12 +34,14 @@ import { UrlPipe } from './pipes/url.pipe';
     ComentariosComponent,
     CartasseguidoresComponent,
     HomeComponent,
-    UrlPipe
+    UrlPipe,
+    SeguidoresComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    APP_ROUTING
   ],
   providers: [
     PublicacionesService,
