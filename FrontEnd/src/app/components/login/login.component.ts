@@ -1,17 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styles: [`
+  	.ng-invalid.ng-touched:not(form) {
+  		border: 1px solid red;
+  	}
+  `]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
 
+	usuario:Object = {
+		correo: null,
+		pass: null
+	}
   constructor(private auth:AuthService) { 
 auth.handleAuthentication();
   }
 
-  ngOnInit() {
+
+
+  guardar(forma: NgForm){
+  	console.log("ngForm", forma);
+  	console.log("valor", forma.value);
+
   }
 
 }

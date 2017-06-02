@@ -10,8 +10,11 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 
 import { PublicacionesService } from './services/publicaciones.service';
+import { SeguidosService } from './services/seguidos.service';
+import { SeguidoresService } from './services/seguidores.service';
 import { PerfilusuarioService } from './services/perfilusuario.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 import { MiniPerfilComponent } from './components/shared/mini-perfil/mini-perfil.component';
 import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpeque.component';
@@ -25,6 +28,8 @@ import { LoginComponent } from './components/login/login.component';
 import { PortadagrandeComponent } from './components/shared/portadagrande/portadagrande.component';
 
 import { CallbackComponent } from './components/callback/callback.component';
+import { InfoperfilComponent } from './components/shared/infoperfil/infoperfil.component';
+import { SeguidosComponent } from './components/seguidos/seguidos.component';
 
 
 
@@ -44,7 +49,9 @@ import { CallbackComponent } from './components/callback/callback.component';
     SeguidoresComponent,
     LoginComponent,
     PortadagrandeComponent,
-    CallbackComponent
+    CallbackComponent,
+    InfoperfilComponent,
+    SeguidosComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +62,10 @@ import { CallbackComponent } from './components/callback/callback.component';
   providers: [
     PublicacionesService,
     PerfilusuarioService,
-    AuthService
+    AuthService,
+    AuthGuardService,
+    SeguidosService,
+    SeguidoresService
   ],
   bootstrap: [AppComponent]
 })
