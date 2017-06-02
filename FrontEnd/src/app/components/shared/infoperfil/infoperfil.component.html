@@ -1,3 +1,15 @@
-<p>
-  infoperfil works!
-</p>
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">{{perfil.nombre}}</h4>
+    <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-envelope" aria-hidden="true"></i>  {{perfil.correo}}</h6><br />
+    <h6 class="card-subtitle mb-2 text-muted">
+      <i class="fa fa-calendar" aria-hidden="true"></i>  {{perfil.fechaUnion}}
+    </h6>
+    <h6 class="card-subtitle mb-2 text-muted" *ngIf="perfil.cumpleanios">
+        <i class="fa fa-birthday-cake" aria-hidden="true"></i> {{perfil.cumpleanios}}
+    </h6>
+
+    <hr />
+    <a href="#" class="card-link">Editar Perfil</a>
+  </div>
+</div>

@@ -67,7 +67,7 @@ body{
 }
 .contenedorFotoPortada{
   position: absolute;
-  top: 50%;
+  top: 260px;
   left: 5%;
 }
 .barraSeguidoresPortada li {
@@ -154,10 +154,12 @@ body{
 .marginPortada{
   margin-top: 55px;
 }
-
+.noMarginTop{
+  margin-top: 20px;
+}
 
 /**/
-/* Full-width input fields */
+/* Full-width input fields
 input[type=text], input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -166,7 +168,7 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-
+*/
 /* Set a style for all buttons */
 /*
 button {
@@ -257,12 +259,12 @@ span.psw {
 }
 
 @-webkit-keyframes animatezoom {
-    from {-webkit-transform: scale(0)} 
+    from {-webkit-transform: scale(0)}
     to {-webkit-transform: scale(1)}
 }
-    
+
 @keyframes animatezoom {
-    from {transform: scale(0)} 
+    from {transform: scale(0)}
     to {transform: scale(1)}
 }
 

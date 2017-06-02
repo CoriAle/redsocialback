@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SeguidosService,Seguidos } from '../../services/seguidos.service';
 
 @Component({
   selector: 'app-seguidos',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class SeguidosComponent implements OnInit {
-
-  constructor() { }
+  seguidos:Seguidos[]=[];
+  constructor(
+    private _seguidos:SeguidosService
+  ) { }
 
   ngOnInit() {
+    this.seguidos = this._seguidos.getSeguidos();
   }
 
 }
