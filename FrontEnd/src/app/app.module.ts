@@ -26,6 +26,8 @@ import { LoginComponent } from './components/login/login.component';
 import { PortadagrandeComponent } from './components/shared/portadagrande/portadagrande.component';
 
 import { CallbackComponent } from './components/callback/callback.component';
+import { InfoperfilComponent } from './components/shared/infoperfil/infoperfil.component';
+import { SeguidosComponent } from './components/seguidos/seguidos.component';
 
 
 
@@ -45,7 +47,9 @@ import { CallbackComponent } from './components/callback/callback.component';
     SeguidoresComponent,
     LoginComponent,
     PortadagrandeComponent,
-    CallbackComponent
+    CallbackComponent,
+    InfoperfilComponent,
+    SeguidosComponent
   ],
   imports: [
     BrowserModule,
