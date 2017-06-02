@@ -85,7 +85,6 @@ body{
 }
 .fotominiCard{
   height: 30%;
-  width: 30%;
   position: absolute;
   top:  110px;
   margin-left: 12px;
@@ -102,4 +101,7 @@ body{
 }
 .barraNavegacion{
    z-index: 100;
+}
+.container-fluid{
+  margin-top: 80px;
 }

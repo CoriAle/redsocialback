@@ -16,6 +16,7 @@ import { MiniPerfilComponent } from './components/shared/mini-perfil/mini-perfil
 import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpeque.component';
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
 import { CartasseguidoresComponent } from './components/cartasseguidores/cartasseguidores.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CartasseguidoresComponent } from './components/cartasseguidores/cartass
     MiniPerfilComponent,
     PerfilpequeComponent,
     ComentariosComponent,
-    CartasseguidoresComponent
+    CartasseguidoresComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
