@@ -13,7 +13,7 @@ body{
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; 
+  background-size: cover;
 }
 
 @media (max-width: 600px) {
@@ -99,4 +99,7 @@ body{
   font-weight: bold;
   font-size: 18px;
   left: 35%;
+}
+.barraNavegacion{
+   z-index: 100;
 }
