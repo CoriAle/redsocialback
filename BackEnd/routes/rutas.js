@@ -9,11 +9,12 @@ api.get('/usuario/:id', UsuarioController.getUsuario);	//de primero va la ruta y
 														//las operaciones se deben ejecutar sobre esa ruta 
 api.get('/usuarios', UsuarioController.getUsuarios);
 api.post('/usuario', UsuarioController.saveUsuarios);
+api.post('/login', UsuarioController.postLogin);
 api.put('/usuario/:id', UsuarioController.updateUsuario);
 api.delete('/usuario/:id', UsuarioController.deleteUsuario);
 
 api.get('/publicacion/:id', PublicacionController.getPublicacion);
-api.get('/publicacion', PublicacionController.getPublicaciones);
+api.get('/publicaciones/:usuariocreador', PublicacionController.getPublicacionespersonas);
 api.post('/publicacion', PublicacionController.savePublicaciones);
 api.delete('/publicacion/:id', PublicacionController.deletePublicacion);
 

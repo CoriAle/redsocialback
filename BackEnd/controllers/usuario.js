@@ -1,23 +1,30 @@
 'use strict'
 
 var Usuario = require('../models/usuario');
-function prueba(req, res){
 
-	if(req.params.nombre){
-		var nombre = req.params.nombre;
-	}
-	else
-	{
-		var nombre = "sin nombre";
-	}
-	
-
-	res.status(200).send({
-		data: [1,2,3],
-		message: "Hola mundo con NodeJs y Express -"+nombre
-	});
+function postLogin(req, res)
+{
+	var usuario=req.body.correo;
+	var password=req.body.password;
+	Usuario.findOne({correo: usuario,password:password},function(err,user)
+		{
+			if(err)
+			{
+				res.status(500).send({message:'Error al iniciar'});
+			}
+			else
+			{
+				if(!user)
+				{
+					res.status(404).send({message:'No coincide la contraseña con el correo'});
+				}
+				else
+				{
+					res.status(200).send({user});
+				}
+			}
+		});
 }
-
 
 function getUsuario(req, res){
 	var usuarioId = req.params.id;
@@ -35,7 +42,7 @@ function getUsuario(req, res){
 			}
 			else
 			{
-			res.status(200).send({plax: usuario});
+			res.status(200).send({usuario});
 			}
 		}
 	});
@@ -143,6 +150,7 @@ function deleteUsuario(req, res) {
 
 module.exports = {
 	getUsuario,
+	postLogin,
 	getUsuarios,
 	saveUsuarios,
 	updateUsuario,
