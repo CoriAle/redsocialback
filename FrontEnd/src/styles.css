@@ -102,3 +102,6 @@ body{
 .barraNavegacion{
    z-index: 100;
 }
+.container-fluid{
+  margin-top: 80px;
+}

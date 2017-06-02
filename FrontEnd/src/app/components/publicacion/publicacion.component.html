@@ -1,15 +1,17 @@
-<div class="col-md-6 offset-md-3  puntero" *ngFor="let publicacion of publicaciones" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+<div class="puntero" *ngFor="let publicacion of publicaciones">
 	<div class="card div-card">
-	  <div class="card-block">
-	    <h4 class="card-title">{{publicacion.user}}</h4>
-	    <p class="card-text">{{publicacion.contenido}}</p>
-	    <p class="card-text"><small class="text-muted">{{publicacion.fecha}}</small></p>
-	  </div>
+	<div  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+		  <div class="card-block">
+		    <h4 class="card-title">{{publicacion.user}}</h4>
+		    <p class="card-text">{{publicacion.contenido}}</p>
+		    <p class="card-text"><small class="text-muted">{{publicacion.fecha}}</small></p>
+		  </div>
 
-	  <app-comentarios></app-comentarios>
-	  <div  *ngIf="publicacion.foto != ''" class="img-item" style="background-image: url('{{publicacion.foto}}')">
-	  
-	  </div>
+		  <app-comentarios></app-comentarios>
+		  <div  *ngIf="publicacion.foto != ''" class="img-item" style="background-image: url('{{publicacion.foto}}')">
+		  
+		  </div>
+	 </div>
 	<div class="row" >
 		<div class="col-md-3 text-center">
 			<button class="btn-block  btn btn-link btn-publicacion-like">
