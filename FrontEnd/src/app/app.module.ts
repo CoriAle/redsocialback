@@ -10,11 +10,12 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 
 import { PublicacionesService } from './services/publicaciones.service';
+import { PerfilusuarioService } from './services/perfilusuario.service';
 
 import { MiniPerfilComponent } from './components/shared/mini-perfil/mini-perfil.component';
-import { AquienSeguirComponent } from './components/shared/aquien-seguir/aquien-seguir.component';
 import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpeque.component';
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
+import { CartasseguidoresComponent } from './components/cartasseguidores/cartasseguidores.component';
 
 
 @NgModule({
@@ -24,9 +25,9 @@ import { ComentariosComponent } from './components/comentarios/comentarios.compo
     FooterComponent,
     PublicacionComponent,
     MiniPerfilComponent,
-    AquienSeguirComponent,
     PerfilpequeComponent,
-    ComentariosComponent
+    ComentariosComponent,
+    CartasseguidoresComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +35,8 @@ import { ComentariosComponent } from './components/comentarios/comentarios.compo
     HttpModule
   ],
   providers: [
-    PublicacionesService
+    PublicacionesService,
+    PerfilusuarioService
   ],
   bootstrap: [AppComponent]
 })
