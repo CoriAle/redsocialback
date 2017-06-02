@@ -1,7 +1,7 @@
 'use strict'
 
 var Publicacion = require('../models/publicacion');
-
+//busco una publicación en específico
 function getPublicacion(req, res){
 	var publicacionId = req.params.id;
 	Publicacion.findById(publicacionId, function(err,publicacion)
@@ -24,8 +24,8 @@ function getPublicacion(req, res){
 	});
 }
 
-
-function getPublicacionespersonas(req, res){
+//sólo listaré mis publicaciones
+function getePublicacionesmias(req, res){
 	var personacreadora= req.params.usuariocreador;
 	Publicacion.find({}).where('usuariocreador').equals(personacreadora).sort('-usuariocreador').exec((err,usuarios)=>//acá está ordenando a través del id
 		{
@@ -48,7 +48,29 @@ function getPublicacionespersonas(req, res){
 		});
 }
 
+function getPublicacionesTodas(req, res){
+	Publicacion.find({}).sort('-_fechapublicacion').exec((err,usuarios)=>//acá está ordenando a través del id
+		{
+			if(err)
+			{
+				res.status(500).send({message: 'Error al devolver los marcadores'});
+			}
+			else
+			{
 
+				if(!usuarios)
+				{
+					res.status(404).send({message:'No hay marcadores'});
+				}
+				else
+				{
+				res.status(200).send(usuarios);
+				}
+			}
+		});
+}
+
+//creo una publicación
 function savePublicaciones(req, res){
 	var publicar = new Publicacion();
 	var params = req.body;
@@ -77,8 +99,12 @@ function savePublicaciones(req, res){
 		}
 	}); 
 }
+function NuevoComentario(req, res)
+{
+	Publicacion.findByIdAndUpdate();
+}
 
-
+//acá puedo eliminar una publicación
 function deletePublicacion(req, res) {
 	var publicacionId = req.params.id;
 	Publicacion.findById(publicacionId, function(err,usuario)// Acá estamos buscando por un Id
@@ -112,7 +138,8 @@ function deletePublicacion(req, res) {
 
 module.exports = {
 	getPublicacion,
-	getPublicacionespersonas,
+	getePublicacionesmias,
+	getPublicacionesTodas,
 	savePublicaciones,
 	deletePublicacion
 }

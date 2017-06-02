@@ -10,6 +10,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 
 import { PublicacionesService } from './services/publicaciones.service';
+import { SeguidosService } from './services/seguidos.service';
+import { SeguidoresService } from './services/seguidores.service';
 import { PerfilusuarioService } from './services/perfilusuario.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
@@ -63,7 +65,10 @@ import { SeguidosComponent } from './components/seguidos/seguidos.component';
     PerfilusuarioService,
     AuthService,
     LoginService,
-    AuthGuardService
+    AuthGuardService,
+    SeguidosService,
+    SeguidoresService
+
   ],
   bootstrap: [AppComponent]
 })
