@@ -14,6 +14,7 @@ import { PublicacionesService } from './services/publicaciones.service';
 import { MiniPerfilComponent } from './components/shared/mini-perfil/mini-perfil.component';
 import { AquienSeguirComponent } from './components/shared/aquien-seguir/aquien-seguir.component';
 import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpeque.component';
+import { ComentariosComponent } from './components/comentarios/comentarios.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpequ
     PublicacionComponent,
     MiniPerfilComponent,
     AquienSeguirComponent,
-    PerfilpequeComponent
+    PerfilpequeComponent,
+    ComentariosComponent
   ],
   imports: [
     BrowserModule,
