@@ -21,7 +21,7 @@ import { UrlPipe } from './pipes/url.pipe';
 import { SeguidoresComponent } from './components/seguidores/seguidores.component';
 import { APP_ROUTING } from './app.routes';
 import { LoginComponent } from './components/login/login.component';
-import { PortadaComponent } from './components/shared/portada/portada.component';
+import { PortadagrandeComponent } from './components/shared/portadagrande/portadagrande.component';
 
 
 
@@ -39,7 +39,7 @@ import { PortadaComponent } from './components/shared/portada/portada.component'
     UrlPipe,
     SeguidoresComponent,
     LoginComponent,
-    PortadaComponent
+    PortadagrandeComponent
   ],
   imports: [
     BrowserModule,
