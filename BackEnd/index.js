@@ -1,6 +1,7 @@
 'use strict'
 
 
+
 //toda la información para generar el server
 var mongoose=require('mongoose');//instanciamos mongoose
 var app = require('./app');

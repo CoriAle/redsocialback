@@ -7,18 +7,33 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 
+import { PublicacionComponent } from './components/publicacion/publicacion.component';
+
+import { PublicacionesService } from './services/publicaciones.service';
+
+import { MiniPerfilComponent } from './components/shared/mini-perfil/mini-perfil.component';
+import { AquienSeguirComponent } from './components/shared/aquien-seguir/aquien-seguir.component';
+import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpeque.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    PublicacionComponent,
+    MiniPerfilComponent,
+    AquienSeguirComponent,
+    PerfilpequeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    PublicacionesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

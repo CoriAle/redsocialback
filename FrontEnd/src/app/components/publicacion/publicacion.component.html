@@ -1,0 +1,36 @@
+<div class="col-md-6 offset-md-3  puntero" *ngFor="let publicacion of publicaciones">
+	<div class="card div-card">
+	  <div class="card-block">
+	    <h4 class="card-title">{{publicacion.user}}</h4>
+	    <p class="card-text">{{publicacion.contenido}}</p>
+	    <p class="card-text"><small class="text-muted">{{publicacion.fecha}}</small></p>
+	  </div>
+	  <div  *ngIf="publicacion.foto != ''" class="img-item" style="background-image: url('{{publicacion.foto}}')">
+	  
+	  </div>
+	<div class="row">
+		<div class="col-md-3 text-center">
+			<button class="btn-block  btn btn-link btn-publicacion-like">
+					<i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+			</button>
+			
+		</div>
+		<div class="col-md-3">
+			<button class="btn-block  btn btn-link btn-publicacion-share">
+				<i class="fa fa-share-square-o fa-lg" aria-hidden="true"></i>
+			</button>
+			
+		</div>
+		<div class="col-md-3">
+			<button class="btn-block btn btn-link">
+				<i class="fa fa-commenting fa-lg" aria-hidden="true"></i>
+			</button>
+			
+		</div>
+		
+		
+		
+	</div>
+</div>
+
+</div>
