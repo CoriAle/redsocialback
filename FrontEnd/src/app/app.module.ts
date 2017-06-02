@@ -17,6 +17,7 @@ import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpequ
 import { ComentariosComponent } from './components/comentarios/comentarios.component';
 import { CartasseguidoresComponent } from './components/cartasseguidores/cartasseguidores.component';
 import { HomeComponent } from './components/home/home.component';
+import { UrlPipe } from './pipes/url.pipe';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { HomeComponent } from './components/home/home.component';
     PerfilpequeComponent,
     ComentariosComponent,
     CartasseguidoresComponent,
-    HomeComponent
+    HomeComponent,
+    UrlPipe
   ],
   imports: [
     BrowserModule,
