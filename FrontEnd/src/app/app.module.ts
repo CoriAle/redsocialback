@@ -11,6 +11,7 @@ import { PublicacionComponent } from './components/publicacion/publicacion.compo
 
 import { PublicacionesService } from './services/publicaciones.service';
 import { PerfilusuarioService } from './services/perfilusuario.service';
+import { AuthService } from './services/auth.service';
 
 import { MiniPerfilComponent } from './components/shared/mini-perfil/mini-perfil.component';
 import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpeque.component';
@@ -22,6 +23,7 @@ import { SeguidoresComponent } from './components/seguidores/seguidores.componen
 import { APP_ROUTING } from './app.routes';
 import { LoginComponent } from './components/login/login.component';
 import { PortadaComponent } from './components/shared/portada/portada.component';
+import { CallbackComponent } from './components/callback/callback.component';
 
 
 
@@ -39,7 +41,8 @@ import { PortadaComponent } from './components/shared/portada/portada.component'
     UrlPipe,
     SeguidoresComponent,
     LoginComponent,
-    PortadaComponent
+    PortadaComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { PortadaComponent } from './components/shared/portada/portada.component'
   ],
   providers: [
     PublicacionesService,
-    PerfilusuarioService
+    PerfilusuarioService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
