@@ -10,10 +10,23 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { PublicacionComponent } from './components/publicacion/publicacion.component';
 
 import { PublicacionesService } from './services/publicaciones.service';
+import { PerfilusuarioService } from './services/perfilusuario.service';
+import { AuthService } from './services/auth.service';
 
 import { MiniPerfilComponent } from './components/shared/mini-perfil/mini-perfil.component';
-import { AquienSeguirComponent } from './components/shared/aquien-seguir/aquien-seguir.component';
 import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpeque.component';
+import { ComentariosComponent } from './components/comentarios/comentarios.component';
+import { CartasseguidoresComponent } from './components/cartasseguidores/cartasseguidores.component';
+import { HomeComponent } from './components/home/home.component';
+import { UrlPipe } from './pipes/url.pipe';
+import { SeguidoresComponent } from './components/seguidores/seguidores.component';
+import { APP_ROUTING } from './app.routes';
+import { LoginComponent } from './components/login/login.component';
+import { PortadagrandeComponent } from './components/shared/portadagrande/portadagrande.component';
+
+import { CallbackComponent } from './components/callback/callback.component';
+
+
 
 
 @NgModule({
@@ -23,16 +36,26 @@ import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpequ
     FooterComponent,
     PublicacionComponent,
     MiniPerfilComponent,
-    AquienSeguirComponent,
-    PerfilpequeComponent
+    PerfilpequeComponent,
+    ComentariosComponent,
+    CartasseguidoresComponent,
+    HomeComponent,
+    UrlPipe,
+    SeguidoresComponent,
+    LoginComponent,
+    PortadagrandeComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    APP_ROUTING
   ],
   providers: [
-    PublicacionesService
+    PublicacionesService,
+    PerfilusuarioService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

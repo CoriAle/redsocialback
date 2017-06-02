@@ -13,7 +13,9 @@ body{
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; 
+  background-size: cover;
+  padding: 20px;
+  border-radius: 25px;
 }
 
 @media (max-width: 600px) {
@@ -32,7 +34,7 @@ body{
 	font-size: 5em;
 }
 .div-card:hover{
-	background-color: #E4E4ED;
+	background-color: #F4F2F8;
 }
 
 .white{
@@ -85,7 +87,6 @@ body{
 }
 .fotominiCard{
   height: 30%;
-  width: 30%;
   position: absolute;
   top:  110px;
   margin-left: 12px;
@@ -99,4 +100,17 @@ body{
   font-weight: bold;
   font-size: 18px;
   left: 35%;
+}
+.barraNavegacion{
+   z-index: 100;
+}
+.container-fluid{
+  margin-top: 75px;
+}
+.fotoPortada{
+  height: 360px;
+  width: 100%;
+}
+.marginPortada{
+  
 }
