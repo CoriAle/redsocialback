@@ -5,9 +5,12 @@ import { DomSanitizer } from '@angular/platform-browser';
   name: 'url'
 })
 export class UrlPipe implements PipeTransform {
+	constructor(private domSanitizer:DomSanitizer){
 
-  transform(value: any, args?: any): any {
-    return null;
+	}
+  transform(uri: string): any {
+  	console.log(this.domSanitizer.bypassSecurityTrustResourceUrl(uri))
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(uri);
   }
 
 }

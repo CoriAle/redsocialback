@@ -20,6 +20,8 @@ import { HomeComponent } from './components/home/home.component';
 import { UrlPipe } from './pipes/url.pipe';
 import { SeguidoresComponent } from './components/seguidores/seguidores.component';
 import { APP_ROUTING } from './app.routes';
+import { LoginComponent } from './components/login/login.component';
+import { PortadaComponent } from './components/shared/portada/portada.component';
 
 
 
@@ -35,7 +37,9 @@ import { APP_ROUTING } from './app.routes';
     CartasseguidoresComponent,
     HomeComponent,
     UrlPipe,
-    SeguidoresComponent
+    SeguidoresComponent,
+    LoginComponent,
+    PortadaComponent
   ],
   imports: [
     BrowserModule,
