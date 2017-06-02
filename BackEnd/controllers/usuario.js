@@ -27,11 +27,17 @@ function getUsuario(req, res){
 		{
 			res.status(500).send({message: 'Error al devolver el marcador'});
 		}
-		if(!usuario)
+		else 
 		{
-			res.status(404).send({message:'No hay marcador'});
+			if(!usuario)
+			{
+				res.status(404).send({message:'No hay marcador'});
+			}
+			else
+			{
+			res.status(200).send({plax: usuario});
+			}
 		}
-		res.status(200).send({plax: usuario});
 	});
 }
 
@@ -43,11 +49,18 @@ function getUsuarios(req, res){
 			{
 				res.status(500).send({message: 'Error al devolver los marcadores'});
 			}
-			if(!usuarios)
+			else
 			{
-				res.status(404).send({message:'No hay marcadores'});
+
+				if(!usuarios)
+				{
+					res.status(404).send({message:'No hay marcadores'});
+				}
+				else
+				{
+				res.status(200).send(usuarios);
+				}
 			}
-			res.status(200).send(usuarios);
 		});
 }
 
@@ -71,20 +84,59 @@ function saveUsuarios(req, res){
 		{
 			res.status(500).send({message: 'Error al guardar el marcador Usuario'});
 		}
-		res.status(200).send({usuario: usuarioStored});
+		else
+		{
+			res.status(200).send({usuario: usuarioStored});	
+		}
 	}); 
 }
 
 
 function updateUsuario(req, res){
-	var params = req.body;
-	res.status(200).send({update: true, favorito: params});
+	var update = req.body;
+	var usuarioId=req.params.id;
+	Usuario.findByIdAndUpdate(usuarioId, update, (err, usuarioUpdate)=>
+		{
+			if(err)
+			{
+				res.status(500).send({message:'Error al actualizar el marcador'});
+			}
+			else
+			{
+				res.status(200).send({usuario : usuarioUpdate});	
+			}
+			
+		});
 }
 
 
 function deleteUsuario(req, res) {
-	var favoritoId = req.params.id;
-	res.status(200).send({delete: true, data:favoritoId});
+	var usuarioId = req.params.id;
+	Usuario.findById(usuarioId, function(err,usuario)// Acá estamos buscando por un Id
+	{
+		if(err)
+		{
+			res.status(500).send({message: 'Error al devolver el marcador'});
+		}
+		if(!usuario)
+		{
+			res.status(404).send({message:'No hay marcador'});
+		}
+		else
+		{
+			usuario.remove(err => 
+			{
+				if(err)
+				{
+					res.status(500).send({message: 'Error al borrar'});
+				}
+				else
+				{
+					res.status(200).send({message:'El marcador se ha eliminado'})
+				}
+			});
+		}
+	});
 }
 
 

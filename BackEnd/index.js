@@ -17,7 +17,7 @@ mongoose.connect('mongodb://localhost:27017/redsocial',(err,res)=>{
 		console.log('Conexión a MongoDB');
 		app.listen(port, function()
 		{
-	console.log( `appi resta https://localhost:${port}`);
+	console.log( 'Aplicacion funcionando correctamente');
 		});
 	}
 
