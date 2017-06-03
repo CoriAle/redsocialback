@@ -6,11 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: [`
-  	.ng-invalid.ng-touched:not(form) {
-  		border: 1px solid red;
-  	}
-  `]
+  styles: []
 })
 export class LoginComponent  {
 	errorMessage;
@@ -32,7 +28,16 @@ export class LoginComponent  {
   	console.log("valor", forma.value);
   	this._login.comparaLogin(this.usuario).subscribe(
   			response=>{
+            this.usuario = response.usuario;
+            this._login.actualizarData(this.usuario);
+            if(true){
+
+            }else
+            {
+
+            }
   					console.log(response);
+
 
   			},
   			error=>{
