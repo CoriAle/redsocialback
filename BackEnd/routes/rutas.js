@@ -17,6 +17,7 @@ api.get('/publicacion/:id', PublicacionController.getPublicacion);
 api.get('/publicaciones/:usuariocreador', PublicacionController.getePublicacionesmias);
 api.get('/publicacion', PublicacionController.getPublicacionesTodas);
 api.post('/publicacion', PublicacionController.savePublicaciones);
+api.put('/publicacion/:id', PublicacionController.updateImage);
 api.delete('/publicacion/:id', PublicacionController.deletePublicacion);
 
 

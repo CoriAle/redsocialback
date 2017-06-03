@@ -1,6 +1,7 @@
 'use strict'
 
 var Publicacion = require('../models/publicacion');
+var Usuario = require ('../models/usuario');
 //busco una publicación en específico
 function getPublicacion(req, res){
 	var publicacionId = req.params.id;
@@ -8,17 +9,27 @@ function getPublicacion(req, res){
 	{
 		if(err)
 		{
-			res.status(500).send({message: 'Error al devolver el marcador'});
+			res.status(500).send({message: 'Error en la petición'});
 		}
 		else 
 		{
 			if(!publicacion)
 			{
-				res.status(404).send({message:'No hay marcador'});
+				res.status(404).send({message:'No se encontró la publicación'});
 			}
 			else
 			{
-			res.status(200).send({publicacion});
+				Usuario.populate(publicacion, {path:'usuariocreador'}, (err, publicacion)=>
+				{
+					if(err)
+					{
+						res.status(500).send({message: 'Error en el proceso'});
+					}
+					else
+					{
+						res.status(200).send({publicacion});
+					}
+				});
 			}
 		}
 	});
@@ -99,9 +110,34 @@ function savePublicaciones(req, res){
 		}
 	}); 
 }
+//genera un nuevo comentarioj
 function NuevoComentario(req, res)
 {
 	Publicacion.findByIdAndUpdate();
+}
+
+function updateImage(req,res)
+{
+	var publicacionId=req.params.id;
+	var update=req.body; 
+	Publicacion.findByIdAndUpdate(publicacionId, update, (err, publicacionUpdate)=>
+	{
+		if(err)
+		{
+			res.status(500).send({message: 'Error en la petición'});
+		}
+		else
+		{
+			if(!publicacionUpdate)
+			{
+				res.status(404).send({message:'No se ha actualizado la publicación'});
+			}
+			else
+			{
+			res.status(200).send({publicar: publicacionUpdate});				
+			}	
+		}
+	});
 }
 
 //acá puedo eliminar una publicación
@@ -140,6 +176,7 @@ module.exports = {
 	getPublicacion,
 	getePublicacionesmias,
 	getPublicacionesTodas,
+	updateImage,
 	savePublicaciones,
 	deletePublicacion
 }

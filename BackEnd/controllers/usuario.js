@@ -20,17 +20,37 @@ function postLogin(req, res)
 				}
 				else
 				{
-					res.status(200).send({user});
+				s	res.status(200).send({user});
 				}
 			}
 		});*/
 		Usuario.findOne({correo:usuario}, function(err, usuario)
-		{
-			if(err) throw err;
+		{	
+			if(err)
+			{
+				console.log('no se encontro ningn correo');
+				res.status(500).send({message: 'No se encontró ningun correo'});
+			}
+			if(!usuario)
+				{ res.status(500).send({message:'No se encontró el correo'});}
+			else
 			usuario.comparePassword(password,function(err, isMatch)
 			{
-				if(err) throw err;
-				res.status(200).send({usuario});
+				if(err) 	
+				{
+						res.status(500).send({message: 'Error al comparar'});
+				}	
+				else
+				{
+					if(!isMatch)
+					{
+						res.status(400).send({message:'No es la combinación'});
+					}
+					else
+					{
+						res.status(200).send({usuario});						
+					}
+				}
 			});
 		});
 }

@@ -18,11 +18,6 @@ var UsuarioSchema = Schema({
 	lockUntil: { type:Number}
 });
 
-UsuarioSchema.virtual('isLocked').get(function()
-{
-	return !!(this.lockUntil && this.lockUntil > Date.now());
-});
-
 
 UsuarioSchema.pre('save', function(next)
 {
