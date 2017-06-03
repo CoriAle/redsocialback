@@ -6,9 +6,9 @@ export class PerfilusuarioService {
     nombre:"Caye",
   	password:"prueba",
   	correo:"caye@yahoo.com",
-  	fechaUnion: new Date ,
+  	fechaUnion: new Date('2017-02-02') ,
   	descripcion:"Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500,",
-  	cumpleanios:new Date ,
+  	cumpleanios:new Date('1997-02-11') ,
   	fotoperfil:"assets/img/foto.jpg",
   	fotoportada:"assets/img/portada.jpeg"
 

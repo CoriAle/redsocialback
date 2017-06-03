@@ -7,9 +7,9 @@ import { GLOBAL } from './global';
 
 @Injectable()
 export class LoginService {
-	
+
 	public url: string;
-  constructor(private _http: Http) { 
+  constructor(private _http: Http) {
   	this.url = GLOBAL.url;
   }
 
@@ -20,5 +20,5 @@ export class LoginService {
   		return this._http.post(this.url +'login', params, {headers: headers})
   					.map(res => res.json());
   }
-  	
+
 }

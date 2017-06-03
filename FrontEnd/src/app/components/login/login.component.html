@@ -1,8 +1,9 @@
 <!-- src/app/app.component.html -->
+
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-sm">Login</button>
 
 <div id="id01" class="modal">
-  
+
   <form (ngSubmit)="guardar(forma)" #forma="ngForm" class="modal-content animate col-md-4" novalidate="">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -16,7 +17,7 @@
           <input class="form-control"
                  type="email"
                  placeholder="Correo electrónico"
-                 name="correo" 
+                 name="correo"
                  [(ngModel)] = "usuario.correo"
                  required
                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
@@ -36,9 +37,9 @@
           <input class="form-control"
                  type="password"
                  placeholder="Contraseña"
-                  name="pass" 
+                  name="pass"
                  [(ngModel)] = "usuario.pass"
-                 minlength="5" 
+                 minlength="5"
                  required
                   #pass="ngModel"
                 >
@@ -55,7 +56,7 @@
           <label class="col-form-label">&nbsp;</label>
           <div class="input-group">
             <button [disabled] = "!forma.valid"
-                    type="submit" 
+                    type="submit"
                     class="btn btn-outline-primary">
               Guardar
             </button>

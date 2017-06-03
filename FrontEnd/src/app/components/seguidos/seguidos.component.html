@@ -2,7 +2,57 @@
 	<div class="row">
     <app-portadagrande></app-portadagrande>
 </div>
-<div class="container-fluid">
+<div class="container-fluid noMarginTop ">
+<div class="row">
+	<div class="col-md-3">
+		<div class="margen-abajo">
+			<app-infoperfil></app-infoperfil>
+		</div>
+		<app-footer></app-footer>
+	</div>
+	<div class="col-md-9 contenedorFichas">
+		<div class="col-md-4 margen-abajo ficha" *ngFor="let item of seguidos">
+		  <div class="card">
+		  <img class="card-img-top portada-mini portada-seguidores" [src]="item.fotoportada" alt="Card image cap">
+
+		  <div class="card-block sinPadding">
+		    <p class="card-text"></p>
+		    <div class="divFotopeque">
+		      <a href="#">
+		          <img class="img-fluid img-thumbnail fotominiCard foto-seguidores " [src]="item.fotoperfil" />
+		      </a>
+		    </div>
+		    <div class="divBtnSeguir">
+		      <button  class="btn btn-outline-primary btnAgregar" >
+						<i class="fa fa-user-plus" aria-hidden="true"></i>
+		        Seguir
+		      </button>
+		    </div>
+		    <div class="infoSeguidores">
+					<h4 class="card-title negro">{{item.nombre}}</h4>
+					<p>
+						{{item.descripcion | cantidadletras}}
+					</p>
+		    </div>
+		  </div>
+		</div>
+		</div>
+
+		<!--fin de la columna-->
+	</div>
+</div>
+</div>
+
 
 </div>
-</div>
+
+<script type="text/javascript">
+	 $(function(){
+		 	var $botonSeguir = $('.contenedorFichas').find('ficha');
+			$botonSeguir.on('mouseover','button.btnSeguir', function (ev) {
+				var $this= $(this);
+				console.log("hols");
+			});
+
+	 })
+</script>

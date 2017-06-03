@@ -1,6 +1,8 @@
 <div class="puntero" *ngFor="let publicacion of publicaciones">
 	<div class="card div-card ">
-		<div  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+		<!--
+		<div  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">-->
+		<div (click)="verPublicacion(publicacion)">
 			  <div class="card-block">
 			    <h4 class="card-title">{{publicacion.user}}</h4>
 			    <p class="card-text">{{publicacion.contenido}}</p>
@@ -15,13 +17,13 @@
 				<button class="btn-block  btn btn-link btn-publicacion-like">
 						<i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
 				</button>
-				
+
 			</div>
 			<div class="col-md-3">
 				<button class="btn-block  btn btn-link btn-publicacion-share">
 					<i class="fa fa-share-square-o fa-lg" aria-hidden="true"></i>
 				</button>
-				
+
 			</div>
 			<div class="col-md-3">
 				<button class="btn-block btn btn-link">
@@ -30,4 +32,25 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" *ngIf="publiSel">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{publiSel.user}}</h5>
+        <button type="button" class="close" (click)="cerrarModal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicacionesService, Publicacion} from '../../services/publicaciones.service';
+
+declare var $:any;
 @Component({
   selector: 'app-publicacion',
   templateUrl: './publicacion.component.html'
@@ -7,6 +9,7 @@ import { PublicacionesService, Publicacion} from '../../services/publicaciones.s
 export class PublicacionComponent implements OnInit {
 
 	publicaciones:Publicacion[];
+  publiSel:any;
   constructor(private _publicacionesService: PublicacionesService) { }
 
   ngOnInit() {
@@ -14,5 +17,13 @@ export class PublicacionComponent implements OnInit {
   	console.log(this.publicaciones);
 
   }
-
+  verPublicacion(publicacion:any){
+    this.publiSel = publicacion;
+    console.log(this.publiSel);
+    $('#myModal').modal();
+  }
+  cerrarModal(){
+    this.publiSel = null;
+    $('#myModal').modal('hide');
+  }
 }
