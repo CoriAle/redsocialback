@@ -4,10 +4,7 @@ import { SeguidoresComponent } from './components/seguidores/seguidores.componen
 import { SeguidosComponent } from './components/seguidos/seguidos.component';
 import { LoginComponent } from './components/login/login.component';
 const APP_ROUTES: Routes = [
-  { path: 'home',
-    component: HomeComponent//,
-  // canActivate: [AuthGuardService]
-	},
+  { path: 'home',  component: HomeComponent},
   { path: 'seguidores', component: SeguidoresComponent },
   { path: 'seguidos', component: SeguidosComponent },
 

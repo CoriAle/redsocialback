@@ -10,11 +10,13 @@ export class PublicacionComponent implements OnInit {
 
 	publicaciones:Publicacion[];
   publiSel:any;
-  constructor(private _publicacionesService: PublicacionesService) { }
+  constructor(private _publicacionesService: PublicacionesService) {
+    this.publicaciones = this._publicacionesService.getPublicaciones();
+  	console.log(this.publicaciones);
+   }
 
   ngOnInit() {
-  	this.publicaciones = this._publicacionesService.getPublicaciones();
-  	console.log(this.publicaciones);
+
 
   }
   verPublicacion(publicacion:any){
