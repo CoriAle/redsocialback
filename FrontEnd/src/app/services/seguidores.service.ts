@@ -13,7 +13,7 @@ export class SeguidoresService {
     {
     id:"string",
     nombre:"Plax",
-    descripcion:"Me encantan los gatos Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500,",
+    descripcion:"#Arduino no es la solución para todo pero si que es el comienzo para buscar esa solución #Maker #DIY #SAV https://campus.programarfacil.com/ ",
     fotoperfil:"assets/img/fotoPlax.jpg",
     fotoportada:"assets/img/portada.jpeg"
   },

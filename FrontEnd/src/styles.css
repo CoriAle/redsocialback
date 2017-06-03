@@ -271,8 +271,6 @@ span.psw {
     from {transform: scale(0)}
     to {transform: scale(1)}
 }
-
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
        display: block;
@@ -281,4 +279,42 @@ span.psw {
     .cancelbtn {
        width: 100%;
     }
+}
+.ficha{
+  display: inline-block;
+  float: left;
+
+}
+.infoSeguidores{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.infoSeguidores{
+  color: gray;
+  font-size: 15px;
+}
+.btnAgregar{
+  height: 30px;
+  font-size: 12px;
+}
+.btnSeguir{
+  background-color: #339dc3;
+  border: none;
+  height: 30px;
+  font-size: 12px;
+}
+.divBtnSeguir{
+  display: block;
+  float: right;
+  margin-right: 15px;
+}
+.portada-seguidores{
+  height: 15%;
+
+}
+.foto-seguidores{
+  top: 45px;
+}
+.negro{
+  color: black;
 }

@@ -1,6 +1,7 @@
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { SeguidoresComponent } from './components/seguidores/seguidores.component';
+import { SeguidosComponent } from './components/seguidos/seguidos.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
@@ -10,6 +11,7 @@ const APP_ROUTES: Routes = [
   // canActivate: [AuthGuardService]
 	},
   { path: 'seguidores', component: SeguidoresComponent },
+  { path: 'seguidos', component: SeguidosComponent },
 
   { path: 'login', component: LoginComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }

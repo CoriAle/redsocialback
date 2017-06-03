@@ -8,6 +8,7 @@ import { SeguidoresService,Seguidores } from '../../services/seguidores.service'
 })
 export class SeguidoresComponent implements OnInit {
   seguidores:Seguidores[]=[];
+  valorBoton:string="Siguiendo";
   constructor(
     private _seguidores:SeguidoresService
   ) { }
@@ -15,5 +16,6 @@ export class SeguidoresComponent implements OnInit {
   ngOnInit() {
     this.seguidores = this._seguidores.getSeguidores();
   }
+  
 
 }

@@ -30,6 +30,7 @@ import { PortadagrandeComponent } from './components/shared/portadagrande/portad
 import { CallbackComponent } from './components/callback/callback.component';
 import { InfoperfilComponent } from './components/shared/infoperfil/infoperfil.component';
 import { SeguidosComponent } from './components/seguidos/seguidos.component';
+import { CantidadletrasPipe } from './pipes/cantidadletras.pipe';
 
 
 
@@ -51,7 +52,8 @@ import { SeguidosComponent } from './components/seguidos/seguidos.component';
     PortadagrandeComponent,
     CallbackComponent,
     InfoperfilComponent,
-    SeguidosComponent
+    SeguidosComponent,
+    CantidadletrasPipe
   ],
   imports: [
     BrowserModule,
