@@ -5,10 +5,10 @@ var Usuario = require('../models/usuario');
 function postLogin(req, res)
 {
 	var usuario=req.body.correo;
-	var password=req.body.password;
+	var password=req.body.pass;
 
 		Usuario.findOne({correo:usuario}, function(err, usuario)
-		{	
+		{
 			if(err)
 			{
 				console.log('no se encontro ningn correo');
@@ -19,10 +19,11 @@ function postLogin(req, res)
 			else
 			usuario.comparePassword(password,function(err, isMatch)
 			{
-				if(err) 	
+				if(err)
 				{
-						res.status(500).send({message: 'Error en contraseña y correo'});
-				}	
+
+						res.send({message: 'Error en contraseña y correo'});
+				}
 				else
 				{
 					if(!isMatch)
@@ -31,7 +32,7 @@ function postLogin(req, res)
 					}
 					else
 					{
-						res.status(200).send({usuario});						
+						res.status(200).send({usuario});
 					}
 				}
 			});
@@ -46,7 +47,7 @@ function getUsuario(req, res){
 		{
 			res.status(500).send({message: 'Error al devolver el marcador'});
 		}
-		else 
+		else
 		{
 			if(!usuario)
 			{
@@ -96,7 +97,7 @@ function saveUsuarios(req, res){
 	usuario.fotoportada = params.fotoportada;
 	usuario.password = params.password;
 
-	usuario.save((err, usuarioStored)=> 
+	usuario.save((err, usuarioStored)=>
 	{
 		if(err)
 		{
@@ -104,9 +105,9 @@ function saveUsuarios(req, res){
 		}
 		else
 		{
-			res.status(200).send({usuario: usuarioStored});	
+			res.status(200).send({usuario: usuarioStored});
 		}
-	}); 
+	});
 }
 
 
@@ -121,9 +122,9 @@ function updateUsuario(req, res){
 			}
 			else
 			{
-				res.status(200).send({usuario : usuarioUpdate});	
+				res.status(200).send({usuario : usuarioUpdate});
 			}
-			
+
 		});
 }
 
@@ -142,7 +143,7 @@ function deleteUsuario(req, res) {
 		}
 		else
 		{
-			usuario.remove(err => 
+			usuario.remove(err =>
 			{
 				if(err)
 				{
