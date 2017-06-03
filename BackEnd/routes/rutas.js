@@ -18,12 +18,13 @@ api.delete('/usuario/:id', UsuarioController.deleteUsuario);
 
 api.get('/publicacion/:id', PublicacionController.getPublicacion);
 api.get('/publicaciones/:usuariocreador', PublicacionController.getePublicacionesmias);
-api.get('/publicacion', PublicacionController.getPublicacionesTodas);
+api.get('/publicaciones', PublicacionController.getPublicacionesTodas);
 api.post('/publicacion', PublicacionController.savePublicaciones);
 api.put('/publicacion/:id', PublicacionController.uploadFotos);
 api.post('/upload-image/:id',multipartMiddleware, PublicacionController.uploadFotos);
 api.delete('/publicacion/:id', PublicacionController.deletePublicacion);
 api.get('/get-image/:foto', PublicacionController.retornarFotos);
+api.post('/comentario/:id', PublicacionController.NuevoComentario);
 
 
 module.exports=api;
