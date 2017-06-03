@@ -6,7 +6,7 @@ function postLogin(req, res)
 {
 	var usuario=req.body.correo;
 	var password=req.body.password;
-	Usuario.findOne({correo: usuario,password:password},function(err,user)
+	/*Usuario.findOne({correo: usuario,password:password},function(err,user)
 		{
 			if(err)
 			{
@@ -16,13 +16,42 @@ function postLogin(req, res)
 			{
 				if(!user)
 				{
-					res.status(404).send({message:'No coincide la contraseña con el correo'});
+					res.status(404).send({bool:false});
 				}
 				else
 				{
-					res.status(200).send({user});
+				s	res.status(200).send({user});
 				}
 			}
+		});*/
+		Usuario.findOne({correo:usuario}, function(err, usuario)
+		{	
+			if(err)
+			{
+				console.log('no se encontro ningn correo');
+				res.status(500).send({message: 'No se encontró ningun correo'});
+			}
+			if(!usuario)
+				{ res.status(500).send({message:'No se encontró el correo'});}
+			else
+			usuario.comparePassword(password,function(err, isMatch)
+			{
+				if(err) 	
+				{
+						res.status(500).send({message: 'Error al comparar'});
+				}	
+				else
+				{
+					if(!isMatch)
+					{
+						res.status(400).send({message:'No es la combinación'});
+					}
+					else
+					{
+						res.status(200).send({usuario});						
+					}
+				}
+			});
 		});
 }
 
@@ -78,7 +107,6 @@ function saveUsuarios(req, res){
 
 	usuario.nombre = params.nombre;
 	usuario.correo = params.correo;
-	usuario.fechaUnion =params.fechaUnion;
 	usuario.descripcion = params.descripcion;
 	usuario.cumpleanios = params.cumpleanios;
 	usuario.fotoperfil = params.fotoperfil;
@@ -89,7 +117,7 @@ function saveUsuarios(req, res){
 	{
 		if(err)
 		{
-			res.status(500).send({message: 'Error al guardar el marcador Usuario'});
+			res.status(500).send({message: 'Error al guardar el Usuario'});
 		}
 		else
 		{
