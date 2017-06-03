@@ -1,5 +1,6 @@
 'use strict'
 
+var path=require('path');//vamos a sacar la ruta donde lo vamos a guardar
 var Publicacion = require('../models/publicacion');
 var Usuario = require ('../models/usuario');
 //busco una publicación en específico
@@ -170,13 +171,66 @@ function deletePublicacion(req, res) {
 	});
 }
 
+//con este método servirá para subir imágenes al servidor
+function uploadFotos(req, res)
+{
+	var comentarioId=req.params.id;
+	var filename='No subido..';
 
+	if(req.files)//con esto para ficheros entrados por http
+	{
+		var file_path = req.files.image.path; //el nombre de donde se va a cargar la imagen será image
+		var file_split = file_path.split('\\');
+		var file_name = file_split[1];
+		Publicacion.findByIdAndUpdate(comentarioId, {foto:file_name}, (err, publicacionUpdate)=>
+		{
+			if(err)
+			{
+				res.status(500).send({message: 'Error en la petición'});
+			}
+			else
+			{
+				if(!publicacionUpdate)
+				{
+					res.status(404).send({message:'No se ha actualizado la publicación'});
+				}
+				else
+				{
+				res.status(200).send({actualizado:publicacionUpdate});				
+				}	
+			}
+		});
+	}
+	else
+	{
+		res.status(200).send({message:'No se pudo subir la imagen'});
+	}
+}
 
+//getImage
+var fs= require('fs');
+function retornarFotos(req, res)
+{
+	var fotoFile=req.params.foto;
+	fs.exists('./uploads/'+fotoFile,function(exists)
+	{
+		if(exists)
+		{
+			res.sendFile(path.resolve('./uploads/'+fotoFile));			
+		}
+		else
+		{
+			res.status(200).send({message:'No existe la imagen'});
+		}
+	});
+}
+	
 module.exports = {
 	getPublicacion,
 	getePublicacionesmias,
 	getPublicacionesTodas,
-	updateImage,
+	uploadFotos, 
+	retornarFotos,
 	savePublicaciones,
 	deletePublicacion
 }
