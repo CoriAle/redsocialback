@@ -85,7 +85,6 @@ function getPublicacionesTodas(req, res){
 //creo una publicación
 function savePublicaciones(req, res){
 	var publicar = new Publicacion();
-	var params = req.body;
 
 	publicar.usuariocreador = params.usuariocreador;
 	publicar.contenido = params.contenido;
@@ -114,9 +113,28 @@ function savePublicaciones(req, res){
 //genera un nuevo comentarioj
 function NuevoComentario(req, res)
 {
-	Publicacion.findByIdAndUpdate();
+	var publicacionId=req.params.id;
+	var comentario={"nombre":req.body.nombre,"contenido":req.body.contenido};
+	Publicacion.findByIdAndUpdate(publicacionId,{$push:{comentario:comentario}},(err,nuevoComentario)=>
+		{
+			if(err)
+			{
+				res.status(500).send({message:'Error al crear comentario'});
+			}
+			else
+			{
+				if(!nuevoComentario)
+				{
+					res.status(404).send({message:'No se esta creando ningún comentario'});
+				}
+				else
+				{
+					res.status(200).send({Creado: nuevoComentario});
+				}
+			}
+		});
 }
-
+//cuando qujiero actualizar la iimagen
 function updateImage(req,res)
 {
 	var publicacionId=req.params.id;
@@ -142,34 +160,7 @@ function updateImage(req,res)
 }
 
 //acá puedo eliminar una publicación
-function deletePublicacion(req, res) {
-	var publicacionId = req.params.id;
-	Publicacion.findById(publicacionId, function(err,usuario)// Acá estamos buscando por un Id
-	{
-		if(err)
-		{
-			res.status(500).send({message: 'Error al devolver el marcador'});
-		}
-		if(!usuario)
-		{
-			res.status(404).send({message:'No hay marcador'});
-		}
-		else
-		{
-			usuario.remove(err => 
-			{
-				if(err)
-				{
-					res.status(500).send({message: 'Error al borrar'});
-				}
-				else
-				{
-					res.status(200).send({message:'El marcador se ha eliminado'})
-				}
-			});
-		}
-	});
-}
+
 
 //con este método servirá para subir imágenes al servidor
 function uploadFotos(req, res)
@@ -186,7 +177,7 @@ function uploadFotos(req, res)
 		{
 			if(err)
 			{
-				res.status(500).send({message: 'Error en la petición'});
+				res.status(404).send({message: 'Error en la petición'});
 			}
 			else
 			{
@@ -224,11 +215,40 @@ function retornarFotos(req, res)
 		}
 	});
 }
+function deletePublicacion(req, res) {
+	var publicacionId = req.params.id;
+	Publicacion.findById(publicacionId, function(err,usuario)// Acá estamos buscando por un Id
+	{
+		if(err)
+		{
+			res.status(500).send({message: 'Error al devolver el marcador'});
+		}
+		if(!usuario)
+		{
+			res.status(404).send({message:'No hay marcador'});
+		}
+		else
+		{
+			usuario.remove(err => 
+			{
+				if(err)
+				{
+					res.status(500).send({message: 'Error al borrar'});
+				}
+				else
+				{
+					res.status(200).send({message:'El marcador se ha eliminado'})
+				}
+			});
+		}
+	});
+}
 	
 module.exports = {
 	getPublicacion,
 	getePublicacionesmias,
 	getPublicacionesTodas,
+	NuevoComentario,
 	uploadFotos, 
 	retornarFotos,
 	savePublicaciones,
