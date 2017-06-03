@@ -23,7 +23,8 @@ export class PublicacionComponent implements OnInit {
     $('#myModal').modal();
   }
   cerrarModal(){
+   $('#myModal').modal('hide');
     this.publiSel = null;
-    $('#myModal').modal('hide');
+   
   }
 }
