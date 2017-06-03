@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { NgForm } from '@angular/forms';
 import { Login } from '../../interfaces/login.interface';
-import { ActivatedRoute, Router } from '@angular/Router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +22,7 @@ export class LoginComponent  {
   		private _login: LoginService,
   		private _route: ActivatedRoute,
   		private  _router: Router
-  	) { 
+  	) {
 
   }
 
