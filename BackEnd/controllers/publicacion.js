@@ -10,13 +10,13 @@ function getPublicacion(req, res){
 	{
 		if(err)
 		{
-			res.status(500).send({message: 'Error en la petición'});
+			res.status(202).send({message: 'Error en la petición'});
 		}
 		else 
 		{
 			if(!publicacion)
 			{
-				res.status(404).send({message:'No se encontró la publicación'});
+				res.status(204).send({message:'No se encontró la publicación'});
 			}
 			else
 			{
@@ -24,7 +24,7 @@ function getPublicacion(req, res){
 				{
 					if(err)
 					{
-						res.status(500).send({message: 'Error en el proceso'});
+						res.status(202).send({message: 'Error en el proceso'});
 					}
 					else
 					{
@@ -43,14 +43,14 @@ function getePublicacionesmias(req, res){
 		{
 			if(err)
 			{
-				res.status(500).send({message: 'Error al devolver los marcadores'});
+				res.status(202).send({message: 'Error al devolver los marcadores'});
 			}
 			else
 			{
 
 				if(!usuarios)
 				{
-					res.status(404).send({message:'No hay marcadores'});
+					res.status(204).send({message:'No hay marcadores'});
 				}
 				else
 				{
@@ -65,14 +65,14 @@ function getPublicacionesTodas(req, res){
 		{
 			if(err)
 			{
-				res.status(500).send({message: 'Error al devolver los marcadores'});
+				res.status(202).send({message: 'Error al devolver los marcadores'});
 			}
 			else
 			{
 
 				if(!usuarios)
 				{
-					res.status(404).send({message:'No hay marcadores'});
+					res.status(204).send({message:'No hay marcadores'});
 				}
 				else
 				{
@@ -95,13 +95,13 @@ function savePublicaciones(req, res){
 	{
 		if(err)
 		{
-			res.status(500).send({message: 'Error al guardar el marcador Usuario'});
+			res.status(202).send({message: 'Error al guardar el marcador Usuario'});
 		}
 		else
 		{
 			if(!publicacionStored)
 			{
-				res.status(404).send({message:'No se ha guardado la publicación'});
+				res.status(204).send({message:'No se ha guardado la publicación'});
 			}
 			else
 			{
@@ -119,13 +119,13 @@ function NuevoComentario(req, res)
 		{
 			if(err)
 			{
-				res.status(500).send({message:'Error al crear comentario'});
+				res.status(202).send({message:'Error al crear comentario'});
 			}
 			else
 			{
 				if(!nuevoComentario)
 				{
-					res.status(404).send({message:'No se esta creando ningún comentario'});
+					res.status(204).send({message:'No se esta creando ningún comentario'});
 				}
 				else
 				{
@@ -143,13 +143,13 @@ function updateImage(req,res)
 	{
 		if(err)
 		{
-			res.status(500).send({message: 'Error en la petición'});
+			res.status(202).send({message: 'Error en la petición'});
 		}
 		else
 		{
 			if(!publicacionUpdate)
 			{
-				res.status(404).send({message:'No se ha actualizado la publicación'});
+				res.status(204).send({message:'No se ha actualizado la publicación'});
 			}
 			else
 			{
@@ -177,13 +177,13 @@ function uploadFotos(req, res)
 		{
 			if(err)
 			{
-				res.status(404).send({message: 'Error en la petición'});
+				res.status(202).send({message: 'Error en la petición'});
 			}
 			else
 			{
 				if(!publicacionUpdate)
 				{
-					res.status(404).send({message:'No se ha actualizado la publicación'});
+					res.status(204).send({message:'No se ha actualizado la publicación'});
 				}
 				else
 				{
@@ -194,7 +194,7 @@ function uploadFotos(req, res)
 	}
 	else
 	{
-		res.status(200).send({message:'No se pudo subir la imagen'});
+		res.status(204).send({message:'No se pudo subir la imagen'});
 	}
 }
 
@@ -211,7 +211,7 @@ function retornarFotos(req, res)
 		}
 		else
 		{
-			res.status(200).send({message:'No existe la imagen'});
+			res.status(204).send({message:'No existe la imagen'});
 		}
 	});
 }
@@ -221,11 +221,11 @@ function deletePublicacion(req, res) {
 	{
 		if(err)
 		{
-			res.status(500).send({message: 'Error al devolver el marcador'});
+			res.status(202).send({message: 'Error al devolver el marcador'});
 		}
 		if(!usuario)
 		{
-			res.status(404).send({message:'No hay marcador'});
+			res.status(204).send({message:'No hay marcador'});
 		}
 		else
 		{
@@ -233,7 +233,7 @@ function deletePublicacion(req, res) {
 			{
 				if(err)
 				{
-					res.status(500).send({message: 'Error al borrar'});
+					res.status(202).send({message: 'Error al borrar'});
 				}
 				else
 				{

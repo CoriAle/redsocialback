@@ -12,23 +12,23 @@ function postLogin(req, res)
 			if(err)
 			{
 				console.log('no se encontro ningn correo');
-				res.status(500).send({message: 'Error en ejecusión'});
+				res.status(202).send({message: 'Error en ejecusión'});
 			}
 			if(!usuario)
-				{ res.status(500).send({message:'No se encontró el correo'});}
+				{ res.status(204).send({message:'No se encontró el correo'});}
 			else
 			usuario.comparePassword(password,function(err, isMatch)
 			{
 				if(err)
 				{
 
-						res.send({message: 'Error en contraseña y correo'});
+						res.status(202).send({message: 'Error en contraseña y correo'});
 				}
 				else
 				{
 					if(!isMatch)
 					{
-						res.status(400).send({message:'No es la combinación'});
+						res.status(204).send({message:'No es la combinación'});
 					}
 					else
 					{
@@ -45,13 +45,13 @@ function getUsuario(req, res){
 	{
 		if(err)
 		{
-			res.status(500).send({message: 'Error al devolver el marcador'});
+			res.status(202).send({message: 'No se ha podido realizar la operacion'});
 		}
 		else
 		{
 			if(!usuario)
 			{
-				res.status(404).send({message:'No hay marcador'});
+				res.status(204).send({message:'No hay marcador'});
 			}
 			else
 			{
@@ -67,14 +67,14 @@ function getUsuarios(req, res){
 		{
 			if(err)
 			{
-				res.status(500).send({message: 'Error al devolver los marcadores'});
+				res.status(202).send({message: 'Error al devolver los marcadores'});
 			}
 			else
 			{
 
 				if(!usuarios)
 				{
-					res.status(404).send({message:'No hay marcadores'});
+					res.status(204).send({message:'No hay marcadores'});
 				}
 				else
 				{
@@ -101,7 +101,7 @@ function saveUsuarios(req, res){
 	{
 		if(err)
 		{
-			res.status(500).send({message: 'Error al guardar el Usuario'});
+			res.status(202).send({message: 'Error al guardar el Usuario'});
 		}
 		else
 		{
@@ -118,7 +118,7 @@ function updateUsuario(req, res){
 		{
 			if(err)
 			{
-				res.status(500).send({message:'Error al actualizar el marcador'});
+				res.status(202).send({message:'Error al actualizar el marcador'});
 			}
 			else
 			{
@@ -135,11 +135,11 @@ function deleteUsuario(req, res) {
 	{
 		if(err)
 		{
-			res.status(500).send({message: 'Error al devolver el marcador'});
+			res.status(202).send({message: 'Error al devolver el marcador'});
 		}
 		if(!usuario)
 		{
-			res.status(404).send({message:'No hay marcador'});
+			res.status(204).send({message:'No hay marcador'});
 		}
 		else
 		{
@@ -147,7 +147,7 @@ function deleteUsuario(req, res) {
 			{
 				if(err)
 				{
-					res.status(500).send({message: 'Error al borrar'});
+					res.status(202).send({message: 'Error al borrar'});
 				}
 				else
 				{
