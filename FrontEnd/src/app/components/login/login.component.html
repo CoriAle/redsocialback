@@ -1,7 +1,14 @@
 <!-- src/app/app.component.html -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 offset-md-6" >
+  <app-singup></app-singup>
+</div>
 
+</div>
 <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-sm">Login</button>
 
+  </div>
 <div id="id01" class="modal modal-login modal-body">
 
   <form (ngSubmit)="guardar(forma)" #forma="ngForm" class="modal-content animate col-md-4 modal-content-login" novalidate="">

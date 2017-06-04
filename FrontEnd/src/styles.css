@@ -343,3 +343,8 @@ span.psw {
 .botonComentar{
   float: right;
 }
+.card-singup
+{
+  background-color: white;
+  opacity: 0.9;
+}
