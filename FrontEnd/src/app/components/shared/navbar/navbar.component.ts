@@ -34,7 +34,6 @@ export class NavbarComponent implements OnInit {
   comentar(forma: NgForm){
     let user : Usuario = JSON.parse(localStorage.getItem("USUARIO"));
     this.publi.id = user._id;
-
     this._publicacionesService.addPublicacion(this.publi).subscribe(
       response=> {
         //this.publi = response;
