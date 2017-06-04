@@ -6,4 +6,8 @@ export interface Usuario {
 	password:string;
 	__v?: number;
 	_id?: number;
+	foto?: string;
+	portada?: string;
+	fechaNac?: Date;
+	desc?: string;
 }

@@ -1,7 +1,8 @@
 'use strict'
 
 var Usuario = require('../models/usuario');
-
+var path=require('path');
+var Publicacion=require('../models/publicacion');
 function postLogin(req, res)
 {
 	var usuario=req.body.correo;
@@ -157,7 +158,82 @@ function deleteUsuario(req, res) {
 		}
 	});
 }
+function uploadPerfil(req, res)
+{
+	var usuarioId=req.params.id;
+	var filename='No subido..';
 
+	if(req.files!=={})//con esto para ficheros entrados por http
+	{
+		
+		var file_path = req.files.image.path; //el nombre de donde se va a cargar la imagen será image
+		var file_split = file_path.split('\\');
+		var file_name = file_split[1];
+		
+		Publicacion.findByIdAndUpdate(usuarioId, {fotoperfil:file_name}, (err, fotoPerfilActualizada)=>
+		{
+			if(err)
+			{
+				res.status(202).send({message: 'Error en la petición'});
+			}
+			else
+			{
+				if(!fotoPerfilActualizada)
+				{
+					res.status(204).send({message:'No se ha actualizado la publicación'});
+				}
+				else
+				{
+				res.status(200).send({actualizado:fotoPerfilActualizada});				
+				}	
+			}
+		});
+	}
+	else
+	{
+		res.status(204).send({message:'No se pudo subir la imagen'});
+	}
+	
+}
+
+
+function uploadPortada(req, res)
+{
+	var usuarioId=req.params.id;
+	var filename='No subido..';
+
+	if(req.files!=={})//con esto para ficheros entrados por http
+	{
+		
+		var file_path = req.files.image.path; //el nombre de donde se va a cargar la imagen será image
+		var file_split = file_path.split('\\');
+		var file_name = file_split[1];
+		
+		Publicacion.findByIdAndUpdate(usuarioId, {fotoportada:file_name}, (err, fotoPortadaActualizada)=>
+		{
+			if(err)
+			{
+				res.status(202).send({message: 'Error en la petición'});
+			}
+			else
+			{
+				if(!fotoPortadaActualizada)
+				{
+					res.status(204).send({message:'No se ha actualizado la publicación'});
+				}
+				else
+				{
+				res.status(200).send({actualizado: fotoPortadaActualizada});				
+				}	
+			}
+		});
+	}
+	else
+	{
+		res.status(204).send({message:'No se pudo subir la imagen'});
+	}
+	
+}
 
 
 module.exports = {
@@ -165,6 +241,8 @@ module.exports = {
 	postLogin,
 	getUsuarios,
 	saveUsuarios,
+	uploadPerfil,
+	uploadPortada,
 	updateUsuario,
 	deleteUsuario
 }

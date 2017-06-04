@@ -15,6 +15,8 @@ api.post('/usuario', UsuarioController.saveUsuarios);
 api.post('/login', UsuarioController.postLogin);
 api.put('/usuario/:id', UsuarioController.updateUsuario);
 api.delete('/usuario/:id', UsuarioController.deleteUsuario);
+api.post('/upload-image-perfil/:id',multipartMiddleware, UsuarioController.uploadPerfil);//suir foto perfil
+api.post('/upload-portada/:id',multipartMiddleware, UsuarioController.uploadPortada);//subir foto portada
 
 api.get('/publicacion/:id', PublicacionController.getPublicacion);
 api.get('/publicaciones', PublicacionController.getPublicacionesTodas);
