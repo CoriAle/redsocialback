@@ -43,7 +43,7 @@ export class PublicacionComponent implements OnInit {
    $('#myModal').modal('hide');
     this.publiSel = null;
   }
-  comentar(forma: NgForm){
+  public comentar(forma: NgForm){
     let user : Usuario = JSON.parse(localStorage.getItem("USUARIO"));
     this.publi.id = user._id;
 
@@ -62,7 +62,7 @@ export class PublicacionComponent implements OnInit {
   }//fin de comentar
 
 }
-interface PublicacionNueva{
+export interface PublicacionNueva{
   id:number;
   contenido:string;
   foto:string;

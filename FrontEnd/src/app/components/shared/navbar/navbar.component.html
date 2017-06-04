@@ -35,7 +35,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="comentar(forma)" #forma="ngForm" class="col-md-10 nopadding" novalidate="">
+        <form (ngSubmit)="comentar(forma)" #forma="ngForm" class="col-md-12 nopadding" novalidate="">
           <div class="alert alert-info">
             <div class="form-group textAreaComentario">
                 <textarea
@@ -51,7 +51,7 @@
                 ></textarea>
             </div>
             <div class=" clearfix col-md-12">
-              <button class="btn btn-info float-right" type="submit">
+              <button class="btn btn-info float-right" type="submit" [disabled] = "!forma.valid">
                 <i class="fa fa-comment" aria-hidden="true"></i>
                 Publicar
               </button>

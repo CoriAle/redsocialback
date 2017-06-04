@@ -17,7 +17,7 @@
       ></textarea>
     </div>
     <div class=" clearfix col-md-12">
-      <button class="btn btn-info float-right" type="submit">
+      <button class="btn btn-info float-right" type="submit" [disabled] = "!forma.valid">
         <i class="fa fa-comment" aria-hidden="true"></i>
         Publicar
       </button>
