@@ -60,7 +60,17 @@ function getPublicacionesTodas(req, res){
 						}
 						else
 						{
-							res.status(200).send({publicaciones});
+							Usuario.populate(publicaciones, {path:'comentario.nombre'},(err,publicaciones)=>
+							{
+								if(err)
+								{
+									res.status(202).send({message:'error de ejecución'});
+								}
+								else
+								{
+									res.status(200).send({publicaciones});
+								}
+							});
 						}
 					});
 				}
