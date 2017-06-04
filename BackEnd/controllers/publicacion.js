@@ -38,7 +38,7 @@ function getPublicacion(req, res){
 
 //Todas las publicaciones con los usuarios
 function getPublicacionesTodas(req, res){
-	Publicacion.find({}).sort('-_fechapublicacion').exec((err,publicaciones)=>//acá está ordenando a través del id
+	Publicacion.find({}).sort('-fechapublicacion').exec((err,publicaciones)=>//acá está ordenando a través del id
 		{
 			if(err)
 			{
@@ -291,30 +291,6 @@ function deletePublicacion(req, res) {
 }
 
 
-//cuando qujiero actualizar la iimagen
-function updateImage(req,res)
-{
-	var publicacionId=req.params.id;
-	var update=req.body; 
-	Publicacion.findByIdAndUpdate(publicacionId, update, (err, publicacionUpdate)=>
-	{
-		if(err)
-		{
-			res.status(202).send({message: 'Error en la petición'});
-		}
-		else
-		{
-			if(!publicacionUpdate)
-			{
-				res.status(204).send({message:'No se ha actualizado la publicación'});
-			}
-			else
-			{
-			res.status(200).send({publicacionUpdate});				
-			}	
-		}
-	});
-}
 module.exports = {
 	getPublicacion,
 	getPublicacionesTodas,

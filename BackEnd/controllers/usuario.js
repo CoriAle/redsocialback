@@ -1,7 +1,8 @@
 'use strict'
 
 var Usuario = require('../models/usuario');
-
+var path=require('path');
+var Publicacion=require('../models/publicacion');
 function postLogin(req, res)
 {
 	var usuario=req.body.correo;
@@ -183,7 +184,7 @@ function uploadPerfil(req, res)
 				}
 				else
 				{
-				res.status(200).send({fotoPerfilActualizada});				
+				res.status(200).send({actualizado:fotoPerfilActualizada});				
 				}	
 			}
 		});
@@ -222,7 +223,7 @@ function uploadPortada(req, res)
 				}
 				else
 				{
-				res.status(200).send({fotoPortadaActualizada});				
+				res.status(200).send({actualizado: fotoPortadaActualizada});				
 				}	
 			}
 		});
@@ -240,8 +241,8 @@ module.exports = {
 	postLogin,
 	getUsuarios,
 	saveUsuarios,
-	updateUsuario,
-	deleteUsuario,
 	uploadPerfil,
-	uploadPortada
+	uploadPortada,
+	updateUsuario,
+	deleteUsuario
 }
