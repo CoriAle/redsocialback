@@ -32,6 +32,7 @@ import { InfoperfilComponent } from './components/shared/infoperfil/infoperfil.c
 import { SeguidosComponent } from './components/seguidos/seguidos.component';
 import { CantidadletrasPipe } from './pipes/cantidadletras.pipe';
 import { SingupComponent } from './components/singup/singup.component';
+import { Registro2Component } from './components/registro2/registro2.component';
 
 
 
@@ -54,7 +55,8 @@ import { SingupComponent } from './components/singup/singup.component';
     InfoperfilComponent,
     SeguidosComponent,
     CantidadletrasPipe,
-    SingupComponent
+    SingupComponent,
+    Registro2Component
   ],
   imports: [
     BrowserModule,

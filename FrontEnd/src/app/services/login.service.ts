@@ -13,8 +13,8 @@ export class LoginService {
   constructor(private _http: Http) {
   	this.url = GLOBAL.url;
   }
-
   comparaLogin(login: Login){
+
   		let json = JSON.stringify(login);
   		let params = json;
   		let headers = new Headers({'Content-Type': 'application/json'});
