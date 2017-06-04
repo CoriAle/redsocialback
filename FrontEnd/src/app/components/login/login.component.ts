@@ -28,7 +28,7 @@ export class LoginComponent  {
   	console.log("valor", forma.value);
   	this._login.comparaLogin(this.usuario).subscribe(
   			response=>{
-            this.usuario = response.usuario;
+            this.usuario.correo = response.usuario;
             this._login.actualizarData(this.usuario);
             if(true){
 
