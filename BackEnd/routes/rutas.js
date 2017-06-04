@@ -15,17 +15,18 @@ api.post('/usuario', UsuarioController.saveUsuarios);
 api.post('/login', UsuarioController.postLogin);
 api.put('/usuario/:id', UsuarioController.updateUsuario);
 api.delete('/usuario/:id', UsuarioController.deleteUsuario);
+api.post('/upload-image-perfil/:id',multipartMiddleware, UsuarioController.uploadPerfil);//suir foto perfil
+api.post('/upload-portada/:id',multipartMiddleware, UsuarioController.uploadPortada);//subir foto portada
 
 api.get('/publicacion/:id', PublicacionController.getPublicacion);
-api.get('/publicaciones/:usuariocreador', PublicacionController.getePublicacionesmias);
 api.get('/publicaciones', PublicacionController.getPublicacionesTodas);
 api.post('/publicacion', PublicacionController.savePublicaciones);
+api.post('/publicacioncon',multipartMiddleware, PublicacionController.savePublicacionesCon);
 api.put('/publicacion/:id', PublicacionController.uploadFotos);
 api.post('/upload-image/:id',multipartMiddleware, PublicacionController.uploadFotos);
 api.delete('/publicacion/:id', PublicacionController.deletePublicacion);
 api.get('/get-image/:foto', PublicacionController.retornarFotos);
-//api.post('/comentario/:id', PublicacionController.NuevoComentario);
-api.post('/comentario/:id',multipartMiddleware, PublicacionController.NuevoComentario);
+api.post('/comentario/:id', PublicacionController.NuevoComentario);
 
 
 module.exports=api;

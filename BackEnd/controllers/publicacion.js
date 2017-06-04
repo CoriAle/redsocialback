@@ -36,32 +36,9 @@ function getPublicacion(req, res){
 	});
 }
 
-//sólo listaré mis publicaciones
-function getePublicacionesmias(req, res){
-	var personacreadora= req.params.usuariocreador;
-	Publicacion.find({}).where('usuariocreador').equals(personacreadora).sort('-usuariocreador').exec((err,usuarios)=>//acá está ordenando a través del id
-		{
-			if(err)
-			{
-				res.status(202).send({message: 'Error al devolver los marcadores'});
-			}
-			else
-			{
-
-				if(!usuarios)
-				{
-					res.status(204).send({message:'No hay marcadores'});
-				}
-				else
-				{
-				res.status(200).send(usuarios);
-				}
-			}
-		});
-}
-
+//Todas las publicaciones con los usuarios
 function getPublicacionesTodas(req, res){
-	Publicacion.find({}).sort('-_fechapublicacion').exec((err,usuarios)=>//acá está ordenando a través del id
+	Publicacion.find({}).sort('-fechapublicacion').exec((err,publicaciones)=>//acá está ordenando a través del id
 		{
 			if(err)
 			{
@@ -70,26 +47,44 @@ function getPublicacionesTodas(req, res){
 			else
 			{
 
-				if(!usuarios)
+				if(!publicaciones)
 				{
 					res.status(204).send({message:'No hay marcadores'});
 				}
 				else
 				{
-				res.status(200).send(usuarios);
+					Usuario.populate(publicaciones,{path:'usuariocreador'},(err,publicaciones)=>{
+						if(err)
+						{
+							res.status(202).send({message:'No hay publicaciones'});
+						}
+						else
+						{
+							Usuario.populate(publicaciones, {path:'comentario.nombre'},(err,publicaciones)=>
+							{
+								if(err)
+								{
+									res.status(202).send({message:'error de ejecución'});
+								}
+								else
+								{
+									res.status(200).send({publicaciones});
+								}
+							});
+						}
+					});
 				}
 			}
 		});
 }
 
 //creo una publicación
+
 function savePublicaciones(req, res){
 	var publicar = new Publicacion();
 	var params= req.body;
 	publicar.usuariocreador = params.id;
 	publicar.contenido = params.contenido;
-	publicar.foto =params.foto;
-	publicar.fechapublicacion;
 
 	publicar.save((err, publicacionStored)=> 
 	{
@@ -110,6 +105,43 @@ function savePublicaciones(req, res){
 		}
 	}); 
 }
+
+
+function savePublicacionesCon(req, res)
+{
+	if(req.files)//con esto para ficheros entrados por http
+	{
+		var file_path = req.files.image.path; //el nombre de donde se va a cargar la imagen será image
+		var file_split = file_path.split('\\');
+		var file_name = file_split[1];
+		var publicar = new Publicacion();
+	publicar={"usuariocreador":req.body.usuariocreador,"contenido":req.body.contenido,"foto":file_name};
+	publicar.save((err, publicacionStored)=> 
+	{
+		if(err)
+		{
+			res.status(202).send({message: 'Error al guardar el marcador Usuario'});
+		}
+		else
+		{
+			if(!publicacionStored)
+			{
+				res.status(204).send({message:'No se ha guardado la publicación'});
+			}
+			else
+			{
+			res.status(200).send({publicar: publicacionStored});				
+			}	
+		}
+	});
+	}
+}
+
+
+
+
+
+
 //genera un nuevo comentario con imagen
 function NuevoComentario(req, res)
 {
@@ -137,7 +169,7 @@ function NuevoComentario(req, res)
 
 //generará un comentario sin imagen
 
-/*function NuevoComentario(req, res)
+function NuevoComentarioFoto(req, res)
 {
 	var publicacionId=req.params.id;
 	if(req.files)//con esto para ficheros entrados por http
@@ -147,7 +179,7 @@ function NuevoComentario(req, res)
 		var file_name = file_split[1];
 	
 	var comentario={"nombre":req.body.nombre,"contenido":req.body.contenido,"foto":file_name};
-	Publicacion.findByIdAndUpdate(publicacionId,{$push:{comentario:comentario}},(err,nuevoComentario)=>
+	Publicacion.findByIdAndUpdate(publicacionId,{$push:{comentario:comentario}},(err,nuevapublicacion)=>
 		{
 			if(err)
 			{
@@ -166,7 +198,7 @@ function NuevoComentario(req, res)
 			}
 		});
 	}
-}*/
+}
 
 
 
@@ -259,35 +291,11 @@ function deletePublicacion(req, res) {
 }
 
 
-//cuando qujiero actualizar la iimagen
-function updateImage(req,res)
-{
-	var publicacionId=req.params.id;
-	var update=req.body; 
-	Publicacion.findByIdAndUpdate(publicacionId, update, (err, publicacionUpdate)=>
-	{
-		if(err)
-		{
-			res.status(202).send({message: 'Error en la petición'});
-		}
-		else
-		{
-			if(!publicacionUpdate)
-			{
-				res.status(204).send({message:'No se ha actualizado la publicación'});
-			}
-			else
-			{
-			res.status(200).send({publicar: publicacionUpdate});				
-			}	
-		}
-	});
-}
 module.exports = {
 	getPublicacion,
-	getePublicacionesmias,
 	getPublicacionesTodas,
 	NuevoComentario,
+	savePublicacionesCon,
 	uploadFotos, 
 	retornarFotos,
 	savePublicaciones,
