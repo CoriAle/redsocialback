@@ -28,7 +28,7 @@ export class LoginComponent  {
   	console.log("valor", forma.value);
   	this._login.comparaLogin(this.usuario).subscribe(
   			response=>{
-           
+
            console.log(response,  "hola");
             if(!response)
             {
@@ -39,7 +39,8 @@ export class LoginComponent  {
               forma.reset();
               forma.pristine;
                 this.closeModal();
-              this._router.navigate(['/home']); 
+              this._router.navigate(['/home']);
+              console.log()
               this._login.actualizarData(this.usuario);
 
 

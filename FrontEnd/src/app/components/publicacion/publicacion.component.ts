@@ -7,18 +7,25 @@ declare var $:any;
   templateUrl: './publicacion.component.html'
 })
 export class PublicacionComponent implements OnInit {
-  publi:Publicacion;
+  publi:PublicacionNueva={
+    id:"",
+    contenido:"",
+    foto :"",
+  };
 	publicaciones:Publicacion[];
   publiSel:any;
   constructor(private _publicacionesService: PublicacionesService) {
-    this.publicaciones = this._publicacionesService.getPublicaciones();
-  	console.log(this.publicaciones);
+
 
 
    }
 
   ngOnInit() {
-
+    this._publicacionesService.getTodasPublicaciones().subscribe(
+      result=>{
+        console.log(result);
+      }
+    );
 
   }
   verPublicacion(publicacion:any){
@@ -30,5 +37,13 @@ export class PublicacionComponent implements OnInit {
    $('#myModal').modal('hide');
     this.publiSel = null;
   }
+  comentar(){
+    console.log(this.publi);
+  }
 
+}
+interface PublicacionNueva{
+  id:string;
+  contenido:string;
+  foto:string;
 }

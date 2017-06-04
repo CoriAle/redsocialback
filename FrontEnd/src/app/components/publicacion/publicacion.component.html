@@ -1,18 +1,18 @@
 <div class="row margenLaterales15 alert  alert-info">
 		<img class="img-fluid img-thumbnail fotoPersonalComentario" src="assets/img/foto.jpg" />
 
-		<form #formImage="ngForm" (ngSubmit)="onSubmit()">
-			<div class="form-group textAreaComentario">
-				
-			</div>
+
+      <div class="form-group textAreaComentario" class="col-md-10">
+        <textarea class="form-control" rows="3" maxlength="140" [(ngModel)]="publi.contenido"></textarea>
+
+      </div>
 			<div class=" clearfix col-md-12">
 
-				<button class="btn btn-info float-right">
+				<button class="btn btn-info float-right" (click)="comentar()">
 					<i class="fa fa-comment" aria-hidden="true"></i>
 					Publicar
 				</button>
 			</div>
-		</form>
 
 
 </div>
