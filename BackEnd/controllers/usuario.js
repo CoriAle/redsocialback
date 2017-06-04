@@ -157,7 +157,82 @@ function deleteUsuario(req, res) {
 		}
 	});
 }
+function uploadPerfil(req, res)
+{
+	var usuarioId=req.params.id;
+	var filename='No subido..';
 
+	if(req.files!=={})//con esto para ficheros entrados por http
+	{
+		
+		var file_path = req.files.image.path; //el nombre de donde se va a cargar la imagen será image
+		var file_split = file_path.split('\\');
+		var file_name = file_split[1];
+		
+		Publicacion.findByIdAndUpdate(usuarioId, {fotoperfil:file_name}, (err, fotoPerfilActualizada)=>
+		{
+			if(err)
+			{
+				res.status(202).send({message: 'Error en la petición'});
+			}
+			else
+			{
+				if(!fotoPerfilActualizada)
+				{
+					res.status(204).send({message:'No se ha actualizado la publicación'});
+				}
+				else
+				{
+				res.status(200).send({fotoPerfilActualizada});				
+				}	
+			}
+		});
+	}
+	else
+	{
+		res.status(204).send({message:'No se pudo subir la imagen'});
+	}
+	
+}
+
+
+function uploadPortada(req, res)
+{
+	var usuarioId=req.params.id;
+	var filename='No subido..';
+
+	if(req.files!=={})//con esto para ficheros entrados por http
+	{
+		
+		var file_path = req.files.image.path; //el nombre de donde se va a cargar la imagen será image
+		var file_split = file_path.split('\\');
+		var file_name = file_split[1];
+		
+		Publicacion.findByIdAndUpdate(usuarioId, {fotoportada:file_name}, (err, fotoPortadaActualizada)=>
+		{
+			if(err)
+			{
+				res.status(202).send({message: 'Error en la petición'});
+			}
+			else
+			{
+				if(!fotoPortadaActualizada)
+				{
+					res.status(204).send({message:'No se ha actualizado la publicación'});
+				}
+				else
+				{
+				res.status(200).send({fotoPortadaActualizada});				
+				}	
+			}
+		});
+	}
+	else
+	{
+		res.status(204).send({message:'No se pudo subir la imagen'});
+	}
+	
+}
 
 
 module.exports = {
@@ -166,5 +241,7 @@ module.exports = {
 	getUsuarios,
 	saveUsuarios,
 	updateUsuario,
-	deleteUsuario
+	deleteUsuario,
+	uploadPerfil,
+	uploadPortada
 }

@@ -310,7 +310,7 @@ function updateImage(req,res)
 			}
 			else
 			{
-			res.status(200).send({publicar: publicacionUpdate});				
+			res.status(200).send({publicacionUpdate});				
 			}	
 		}
 	});
