@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { NgForm } from '@angular/forms';
 import { Login } from '../../interfaces/login.interface';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,12 +28,18 @@ export class LoginComponent  {
   	console.log("valor", forma.value);
   	this._login.comparaLogin(this.usuario).subscribe(
   			response=>{
-            this.usuario.correo = response.usuario;
-            this._login.actualizarData(this.usuario);
-            if(true){
-
-            }else
+           
+           console.log(response,  "hola");
+            if(!response)
             {
+                alert("Usuario o contraseña incorrectos");
+            }
+            else
+            {
+                this.closeModal();
+              this._router.navigate(['/home']); 
+              this._login.actualizarData(this.usuario);
+
 
             }
   					console.log(response);
@@ -48,6 +54,14 @@ export class LoginComponent  {
   			}
   		);
 
-  }
+  } //fin guardar
+
+  closeModal(){
+    var modal = document.getElementById('id01');
+    console.log(modal);
+    console.log("Aquí estoy")
+        modal.style.display = "none";
+
+}
 
 }
