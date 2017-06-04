@@ -85,7 +85,7 @@ function getPublicacionesTodas(req, res){
 //creo una publicación
 function savePublicaciones(req, res){
 	var publicar = new Publicacion();
-
+	var params= req.body;
 	publicar.usuariocreador = params.usuariocreador;
 	publicar.contenido = params.contenido;
 	publicar.foto =params.foto;
