@@ -1,4 +1,5 @@
 
+<script src="login.component.ts"></script>
 <div class="carousel slide carousel-fade" data-ride="carousel">
 
     <!-- Wrapper for slides -->
@@ -47,7 +48,7 @@
       <div class="container col-md-10">
          <div class="form-group" [ngClass] = "{'has-danger': (correo.errors?.pattern || correo.errors?.required) && correo.touched}">
           <label >Correo</label>
-         
+
 
             <input class="form-control input-login"
                    type="email"
@@ -63,7 +64,7 @@
             <div *ngIf="correo.errors?.pattern && correo.touched" class="form-control-feedback">
               Este campo no tiene formato de correo válido.
             </div>
-          
+
         </div>
         <div class="form-group" [ngClass] = "{'has-danger': (pass.errors?.minlength || pass.errors?.required) && pass.touched}">
           <label>Contraseña</label>
@@ -103,7 +104,7 @@
 
       <div class="container col-md-11" style="background-color:#f1f1f1">
         <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn-pers btn-block btn-outline-danger">Cancel</button>
-      
+
       </div>
     </form>
 </div>

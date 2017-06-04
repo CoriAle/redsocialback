@@ -49,5 +49,17 @@ export class PublicacionesService {
   getTodasPublicaciones(){
     return this._http.get(this.url+'publicaciones').map(res => res.json());
   }
+  addPublicacion(publi:PublicacionNueva){
+    let json = JSON.stringify(publi);
+    let params = json;
+    let headers = new Headers({'Content-Type': 'application/json'});
+    return this._http.post(this.url +'publicacion', params, {headers: headers})
+      .map(res =>res.json() );
+  }
+}
 
+interface PublicacionNueva{
+  id:number;
+  contenido:string;
+  foto:string;
 }

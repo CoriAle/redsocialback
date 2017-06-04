@@ -337,8 +337,10 @@ span.psw {
   margin-right: 15px;
 }
 .textAreaComentario{
-  width: 86%;
   margin-left: 10px;
+}
+.nopadding{
+  padding:0px;
 }
 .botonComentar{
   float: right;
@@ -429,4 +431,8 @@ html {
   padding: 10px;
   text-shadow: 2px 2px #000;
   color: #FFF;
+}
+.botonFoto{
+  padding-bottom: 0px;
+  margin-right: 10px;
 }

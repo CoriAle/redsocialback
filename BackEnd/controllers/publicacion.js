@@ -86,7 +86,7 @@ function getPublicacionesTodas(req, res){
 function savePublicaciones(req, res){
 	var publicar = new Publicacion();
 	var params= req.body;
-	publicar.usuariocreador = params.usuariocreador;
+	publicar.usuariocreador = params.id;
 	publicar.contenido = params.contenido;
 	publicar.foto =params.foto;
 	publicar.fechapublicacion;
@@ -105,7 +105,7 @@ function savePublicaciones(req, res){
 			}
 			else
 			{
-			res.status(200).send({publicar: publicacionStored});				
+			res.status(200).send({publicar: publicar});
 			}	
 		}
 	}); 

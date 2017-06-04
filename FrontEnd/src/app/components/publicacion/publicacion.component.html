@@ -2,17 +2,34 @@
 		<img class="img-fluid img-thumbnail fotoPersonalComentario" src="assets/img/foto.jpg" />
 
 
-      <div class="form-group textAreaComentario" class="col-md-10">
-        <textarea class="form-control" rows="3" maxlength="140" [(ngModel)]="publi.contenido"></textarea>
-
+  <form (ngSubmit)="comentar(forma)" #forma="ngForm" class="col-md-10 nopadding" novalidate="">
+    <div class="form-group textAreaComentario">
+      <textarea
+        class="form-control input-login"
+        type="text"
+        placeholder="¿Qué estás pensando?"
+        name="pass"
+        [(ngModel)] = "publi.contenido"
+        maxlength="140"
+        required
+        #pass="ngModel"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class=" clearfix col-md-12">
+      <button class="btn btn-info float-right" type="submit">
+        <i class="fa fa-comment" aria-hidden="true"></i>
+        Publicar
+      </button>
+      <div class="btn btn-info float-right botonFoto">
+        <label>
+          <i class="fa fa-camera" aria-hidden="true"></i> <input type="file" hidden >
+        </label>
       </div>
-			<div class=" clearfix col-md-12">
+    </div>
+  </form>
 
-				<button class="btn btn-info float-right" (click)="comentar()">
-					<i class="fa fa-comment" aria-hidden="true"></i>
-					Publicar
-				</button>
-			</div>
+
 
 
 </div>
