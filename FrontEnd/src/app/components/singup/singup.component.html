@@ -1,20 +1,64 @@
 <div class="card card-outline-primary mb-3 card-singup" >
-	<form class="card-block">
-	  <div class="form-group">
+	<form class="card-block" (ngSubmit)="guardar(form)" #form="ngForm">
+	  <div class="form-group"  [ngClass] = "{'has-danger': (nombre.errors?.required) && nombre.touched}">
 	    <label for="nombre">Nombre</label>
-	    <input type="email" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="Ingrese nombre">
+	    <input 
+	    	type="text" 
+	    	class="form-control" 
+	    	id="nombre" 
+	    	aria-describedby="emailHelp" 
+	    	placeholder="Ingrese nombre"
+	    	[(ngModel)] = "usuario.nombre"
+                 required
+                 name="nombre"
+                 #nombre="ngModel">
+           <div *ngIf="nombre.errors?.required && nombre.touched" class="form-control-feedback">
+            	Este campo es requerido.
+          </div>
 	  </div>
-	  <div class="form-group">
+	  <div class="form-group" [ngClass] = "{'has-danger': (correo.errors?.pattern || correo.errors?.required) && correo.touched}">
 	    <label for="correo">Correo electrónico</label>
-	    <input type="email" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Ingrese correo electrónico">
+	    <input 
+	    	type="email" 
+	    	class="form-control" 
+	    	id="correo" 
+	    	aria-describedby="emailHelp" 
+	    	placeholder="Ingrese correo electrónico"
+	    	name="correo"
+                 [(ngModel)] = "usuario.correo"
+                 required
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                 name="correo" 
+                 #correo="ngModel">
 	    <small id="emailHelp" class="form-text text-muted">Nunca compartiremos tu correo con alguien más</small>
+	    <div *ngIf="correo.errors?.required && correo.touched" class="form-control-feedback">
+            Este campo es requerido.
+          </div>
+          <div *ngIf="correo.errors?.pattern && correo.touched" class="form-control-feedback">
+            Este campo no tiene formato de correo válido.
+          </div>
 	  </div>
-	  <div class="form-group">
+	  <div class="form-group" [ngClass] = "{'has-danger': (password.errors?.minlength || password.errors?.required) && password.touched}">
 	    <label for="exampleInputPassword1">Password</label>
-	    <input type="password" class="form-control" id="password" placeholder="Contraseña">
+	    <input 
+	    	type="password" 
+	    	class="form-control" 
+	    	id="password" 
+	    	placeholder="Contraseña"
+	    	name="password"
+	    	 [(ngModel)] = "usuario.password"
+                 minlength="5"
+                 required
+                  #password="ngModel">
+                  <div *ngIf="password.errors?.required  && password.touched" class="form-control-feedback">
+		            Este campo es requerido.
+		          </div>
+		          <div *ngIf="password.errors?.minlength  && password.touched" class="form-control-feedback">
+		           Por lo menos {{password.errors.minlength.requiredLength}} caracteres.
+		          </div>
 	  </div>
 	   <div class="form-group">
-	    <button class="btn  btn-block btn-outline-success">Registrarse</button>
+	    <button [disabled] = "!form.valid" class="btn  btn-block btn-outline-success">Registrarse</button>
 	  </div>
   </form>
  </div>

@@ -15,6 +15,7 @@ import { SeguidoresService } from './services/seguidores.service';
 import { PerfilusuarioService } from './services/perfilusuario.service';
 import { LoginService } from './services/login.service';
 import { GuardService } from './services/guard.service';
+import { SingupService } from './services/singup.service';
 
 import { MiniPerfilComponent } from './components/shared/mini-perfil/mini-perfil.component';
 import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpeque.component';
@@ -67,7 +68,8 @@ import { SingupComponent } from './components/singup/singup.component';
     LoginService,
     SeguidosService,
     SeguidoresService,
-    GuardService
+    GuardService,
+    SingupService
 
   ],
   bootstrap: [AppComponent]
