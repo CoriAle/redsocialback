@@ -47,7 +47,12 @@ export class PublicacionesService {
   }
 
   getTodasPublicaciones(){
-    return this._http.get(this.url+'publicaciones').map(res => res.json());
+    return this._http.get(this.url+'publicaciones').map(res =>{
+      this.publicaciones = res.json().publicaciones;
+      console.log("esto es de la variable");
+      console.log(this.publicaciones);
+      return res.json().publicaciones;
+    });
   }
   addPublicacion(publi:PublicacionNueva){
     let json = JSON.stringify(publi);

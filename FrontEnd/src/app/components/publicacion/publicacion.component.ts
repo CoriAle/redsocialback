@@ -22,25 +22,24 @@ export class PublicacionComponent implements OnInit {
               private activateRouter:ActivatedRoute
   ) {
 
-
+    this._publicacionesService.getTodasPublicaciones().subscribe(
+      data =>{
+        console.log(data);
+      });
 
    }
 
   ngOnInit() {
-    this._publicacionesService.getTodasPublicaciones().subscribe(
-      result=>{
-        console.log(result);
-      }
-    );
+
 
   }
   verPublicacion(publicacion:any){
     this.publiSel = publicacion;
-    console.log(this.publiSel);
-    $('#myModal').modal();
+    console.log(publicacion);
+    $('#myModal0').modal();
   }
   cerrarModal(){
-   $('#myModal').modal('hide');
+   $('#myModal0').modal('hide');
     this.publiSel = null;
   }
   public comentar(forma: NgForm){
