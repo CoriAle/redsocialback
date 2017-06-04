@@ -22,6 +22,7 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
         <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Twittear
       </button>
+      <button type="button" class="btn btn-outline-warning" *ngIf="_login.isAutenticated()" (click)="LogOut()">Cerrar Sesión</button>
     </form>
   </div>
 </nav>

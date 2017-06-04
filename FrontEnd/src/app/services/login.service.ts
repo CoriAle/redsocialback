@@ -20,5 +20,15 @@ export class LoginService {
   		return this._http.post(this.url +'login', params, {headers: headers})
   					.map(res => res.json());
   }
+  actualizarData(usuario:Login){
+    localStorage.setItem("USUARIO", JSON.stringify(usuario));
+  }
+  isAutenticated():Boolean{
+    if(localStorage.USUARIO)
+      return true;
+    
+    else
+      return false;
+  }
 
 }

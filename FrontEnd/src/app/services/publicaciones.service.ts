@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { Publicacion } from '../interfaces/publicacion.interface';
 @Injectable()
 export class PublicacionesService {
 
@@ -30,20 +30,11 @@ export class PublicacionesService {
 		}
 	];
 
-  constructor() { 
+  constructor() {
   }
 
   getPublicaciones():Publicacion[]{
   	return this.publicaciones;
   }
 
-}
-
-export interface Publicacion{
-	id:string,
-	user:string,
-	contenido:string,
-	foto:string,
-	comentarios:any[],
-	fecha:Date
 }
