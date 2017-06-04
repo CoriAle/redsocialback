@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Publicacion } from '../interfaces/publicacion.interface';
+import { Http, Response, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { GLOBAL } from './global';
+
 @Injectable()
 export class PublicacionesService {
-
-	publicaciones:Publicacion[] = [
+/*
+	publicaciones:any[] = [
 		{
 			id: "1",
 			user: "Cori",
@@ -28,13 +32,34 @@ export class PublicacionesService {
 			comentarios: [],
 			fecha: new Date()
 		}
-	];
-
-  constructor() {
+	];*/
+  publicaciones:any[]=[];
+	public  url:string;
+  constructor(
+    private _http:Http
+  ) {
+      this.url = GLOBAL.url;
   }
 
   getPublicaciones():Publicacion[]{
-  	return this.publicaciones;
+    return  this.publicaciones;
+
   }
 
+  getTodasPublicaciones(){
+    return this._http.get(this.url+'publicaciones').map(res => res.json());
+  }
+  addPublicacion(publi:PublicacionNueva){
+    let json = JSON.stringify(publi);
+    let params = json;
+    let headers = new Headers({'Content-Type': 'application/json'});
+    return this._http.post(this.url +'publicacion', params, {headers: headers})
+      .map(res =>res.json() );
+  }
+}
+
+interface PublicacionNueva{
+  id:number;
+  contenido:string;
+  foto:string;
 }

@@ -1,88 +1,110 @@
-<!-- src/app/app.component.html -->
 
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="btn btn-sm">Login</button>
+<script src="login.component.ts"></script>
+<div class="carousel slide carousel-fade" data-ride="carousel">
 
-<div id="id01" class="modal modal-login modal-body">
-
-  <form (ngSubmit)="guardar(forma)" #forma="ngForm" class="modal-content animate col-md-4 modal-content-login" novalidate="">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-    </div>
-
-    <div class="container col-md-10">
-       <div class="form-group" [ngClass] = "{'has-danger': (correo.errors?.pattern || correo.errors?.required) && correo.touched}">
-        <label >Correo</label>
-       
-
-          <input class="form-control input-login"
-                 type="email"
-                 placeholder="Correo electrónico"
-                 name="correo"
-                 [(ngModel)] = "usuario.correo"
-                 required
-                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                 #correo="ngModel">
-          <div *ngIf="correo.errors?.required && correo.touched" class="form-control-feedback">
-            Este campo es requerido.
-          </div>
-          <div *ngIf="correo.errors?.pattern && correo.touched" class="form-control-feedback">
-            Este campo no tiene formato de correo válido.
-          </div>
-        
-      </div>
-      <div class="form-group" [ngClass] = "{'has-danger': (pass.errors?.minlength || pass.errors?.required) && pass.touched}">
-        <label>Contraseña</label>
-        <div >
-
-          <input class="form-control input-login"
-                 type="password"
-                 placeholder="Contraseña"
-                  name="pass"
-                 [(ngModel)] = "usuario.pass"
-                 minlength="5"
-                 required
-                  #pass="ngModel"
-                >
-          <div *ngIf="pass.errors?.required  && pass.touched" class="form-control-feedback">
-            Este campo es requerido.
-          </div>
-          <div *ngIf="pass.errors?.minlength  && pass.touched" class="form-control-feedback">
-           Por lo menos {{pass.errors.minlength.requiredLength}} caracteres.
-          </div>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
         </div>
-      </div>
-
-        <div class="form-group row">
-          <label class="col-form-label">&nbsp;</label>
-          <div class="input-group">
-            <button [disabled] = "!forma.valid"
-                    type="submit"
-                    class="btn btn-outline-success btn-block">
-              Guardar
-            </button>
-          </div>
+        <div class="carousel-item">
         </div>
-
-
+        <div class="carousel-item">
+        </div>
     </div>
-
-    <div class="container col-md-11" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn-pers btn-block btn-outline-danger">Cancel</button>
-    
-    </div>
-  </form>
 </div>
-<!--
-<script>
-// Get the modal
+
+<!-- src/app/app.component.html -->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 offset-md-7" >
+        <app-singup></app-singup>
+
+    </div >
+
+    </div>
+  <div class="row">
+  <div class="col-md-4 offset-md-7">
+    <div class="card card-outline-primary mb-3 card-singup" >
+      <div class="card-block">
+      <h2 class="text-center">Ingresa a tu cuenta</h2>
+      <hr>
+        <button onclick="document.getElementById('id01').style.display='block'"  class="btn btn-block btn-primary">
+            Login
+        </button>
+      </div>
+    </div>
+    </div>
+  </div>
 
 
-var modal = document.getElementById('id01');
+</div>
+  <div id="id01" class="modal modal-login modal-body">
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>-->
+    <form (ngSubmit)="guardar(forma)" #forma="ngForm" class="modal-content animate col-md-4 modal-content-login" novalidate="">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      </div>
+
+      <div class="container col-md-10">
+         <div class="form-group" [ngClass] = "{'has-danger': (correo.errors?.pattern || correo.errors?.required) && correo.touched}">
+          <label >Correo</label>
+
+
+            <input class="form-control input-login"
+                   type="email"
+                   placeholder="Correo electrónico"
+                   name="correo"
+                   [(ngModel)] = "usuario.correo"
+                   required
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                   #correo="ngModel">
+            <div *ngIf="correo.errors?.required && correo.touched" class="form-control-feedback">
+              Este campo es requerido.
+            </div>
+            <div *ngIf="correo.errors?.pattern && correo.touched" class="form-control-feedback">
+              Este campo no tiene formato de correo válido.
+            </div>
+
+        </div>
+        <div class="form-group" [ngClass] = "{'has-danger': (pass.errors?.minlength || pass.errors?.required) && pass.touched}">
+          <label>Contraseña</label>
+          <div >
+
+            <input class="form-control input-login"
+                   type="password"
+                   placeholder="Contraseña"
+                    name="pass"
+                   [(ngModel)] = "usuario.pass"
+                   minlength="5"
+                   required
+                    #pass="ngModel"
+                  >
+            <div *ngIf="pass.errors?.required  && pass.touched" class="form-control-feedback">
+              Este campo es requerido.
+            </div>
+            <div *ngIf="pass.errors?.minlength  && pass.touched" class="form-control-feedback">
+             Por lo menos {{pass.errors.minlength.requiredLength}} caracteres.
+            </div>
+          </div>
+        </div>
+
+          <div class="form-group row">
+            <label class="col-form-label">&nbsp;</label>
+            <div class="input-group">
+              <button [disabled] = "!forma.valid"
+                      type="submit"
+                      class="btn btn-outline-success btn-block">
+                Guardar
+              </button>
+            </div>
+          </div>
+
+
+      </div>
+
+      <div class="container col-md-11" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn-pers btn-block btn-outline-danger">Cancel</button>
+
+      </div>
+    </form>
+</div>
