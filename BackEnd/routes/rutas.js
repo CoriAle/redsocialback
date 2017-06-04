@@ -24,7 +24,8 @@ api.put('/publicacion/:id', PublicacionController.uploadFotos);
 api.post('/upload-image/:id',multipartMiddleware, PublicacionController.uploadFotos);
 api.delete('/publicacion/:id', PublicacionController.deletePublicacion);
 api.get('/get-image/:foto', PublicacionController.retornarFotos);
-api.post('/comentario/:id', PublicacionController.NuevoComentario);
+//api.post('/comentario/:id', PublicacionController.NuevoComentario);
+api.post('/comentario/:id',multipartMiddleware, PublicacionController.NuevoComentario);
 
 
 module.exports=api;

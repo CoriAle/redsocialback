@@ -110,7 +110,7 @@ function savePublicaciones(req, res){
 		}
 	}); 
 }
-//genera un nuevo comentarioj
+//genera un nuevo comentario con imagen
 function NuevoComentario(req, res)
 {
 	var publicacionId=req.params.id;
@@ -134,32 +134,41 @@ function NuevoComentario(req, res)
 			}
 		});
 }
-//cuando qujiero actualizar la iimagen
-function updateImage(req,res)
+
+//generará un comentario sin imagen
+
+/*function NuevoComentario(req, res)
 {
 	var publicacionId=req.params.id;
-	var update=req.body; 
-	Publicacion.findByIdAndUpdate(publicacionId, update, (err, publicacionUpdate)=>
+	if(req.files)//con esto para ficheros entrados por http
 	{
-		if(err)
+		var file_path = req.files.image.path; //el nombre de donde se va a cargar la imagen será image
+		var file_split = file_path.split('\\');
+		var file_name = file_split[1];
+	
+	var comentario={"nombre":req.body.nombre,"contenido":req.body.contenido,"foto":file_name};
+	Publicacion.findByIdAndUpdate(publicacionId,{$push:{comentario:comentario}},(err,nuevoComentario)=>
 		{
-			res.status(202).send({message: 'Error en la petición'});
-		}
-		else
-		{
-			if(!publicacionUpdate)
+			if(err)
 			{
-				res.status(204).send({message:'No se ha actualizado la publicación'});
+				res.status(202).send({message:'Error al crear comentario'});
 			}
 			else
 			{
-			res.status(200).send({publicar: publicacionUpdate});				
-			}	
-		}
-	});
-}
+				if(!nuevoComentario)
+				{
+					res.status(204).send({message:'No se esta creando ningún comentario'});
+				}
+				else
+				{
+					res.status(200).send({Creado: nuevoComentario});
+				}
+			}
+		});
+	}
+}*/
 
-//acá puedo eliminar una publicación
+
 
 
 //con este método servirá para subir imágenes al servidor
@@ -168,11 +177,13 @@ function uploadFotos(req, res)
 	var comentarioId=req.params.id;
 	var filename='No subido..';
 
-	if(req.files)//con esto para ficheros entrados por http
+	if(req.files!=={})//con esto para ficheros entrados por http
 	{
+		
 		var file_path = req.files.image.path; //el nombre de donde se va a cargar la imagen será image
 		var file_split = file_path.split('\\');
 		var file_name = file_split[1];
+		
 		Publicacion.findByIdAndUpdate(comentarioId, {foto:file_name}, (err, publicacionUpdate)=>
 		{
 			if(err)
@@ -196,6 +207,7 @@ function uploadFotos(req, res)
 	{
 		res.status(204).send({message:'No se pudo subir la imagen'});
 	}
+	
 }
 
 //getImage
@@ -215,6 +227,8 @@ function retornarFotos(req, res)
 		}
 	});
 }
+
+//acá puedo eliminar una publicación
 function deletePublicacion(req, res) {
 	var publicacionId = req.params.id;
 	Publicacion.findById(publicacionId, function(err,usuario)// Acá estamos buscando por un Id
@@ -243,7 +257,32 @@ function deletePublicacion(req, res) {
 		}
 	});
 }
-	
+
+
+//cuando qujiero actualizar la iimagen
+function updateImage(req,res)
+{
+	var publicacionId=req.params.id;
+	var update=req.body; 
+	Publicacion.findByIdAndUpdate(publicacionId, update, (err, publicacionUpdate)=>
+	{
+		if(err)
+		{
+			res.status(202).send({message: 'Error en la petición'});
+		}
+		else
+		{
+			if(!publicacionUpdate)
+			{
+				res.status(204).send({message:'No se ha actualizado la publicación'});
+			}
+			else
+			{
+			res.status(200).send({publicar: publicacionUpdate});				
+			}	
+		}
+	});
+}
 module.exports = {
 	getPublicacion,
 	getePublicacionesmias,
