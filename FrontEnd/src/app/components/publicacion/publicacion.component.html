@@ -1,3 +1,23 @@
+<div class="row margenLaterales15 alert  alert-info">
+		<img class="img-fluid img-thumbnail fotoPersonalComentario" src="assets/img/foto.jpg" />
+
+		<form #formImage="ngForm" (ngSubmit)="onSubmit()">
+			<div class="form-group textAreaComentario">
+				
+			</div>
+			<div class=" clearfix col-md-12">
+
+				<button class="btn btn-info float-right">
+					<i class="fa fa-comment" aria-hidden="true"></i>
+					Publicar
+				</button>
+			</div>
+		</form>
+
+
+</div>
+
+<!--inicio de las publicaciones-->
 <div class="puntero" *ngFor="let publicacion of publicaciones">
 	<div class="card div-card ">
 		<!--
@@ -48,11 +68,41 @@
 				<img [src]="publiSel?.foto"  *ngIf="publiSel?.foto != ''" class="img-item"/>
 
 				<p class="card-text"><small class="text-muted">{{publiSel?.fecha}}</small></p>
-      </div>
+				<div class="row" >
+					<div class="col-md-3 text-center">
+						<button class="btn-block  btn btn-link btn-publicacion-like">
+								<i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+						</button>
 
+					</div>
+					<div class="col-md-3">
+						<button class="btn-block  btn btn-link btn-publicacion-share">
+							<i class="fa fa-share-square-o fa-lg" aria-hidden="true"></i>
+						</button>
+
+					</div>
+					<div class="col-md-3">
+						<button class="btn-block btn btn-link">
+							<i class="fa fa-commenting fa-lg" aria-hidden="true"></i>
+						</button>
+					</div>
+				</div>
+      </div>
+			<div>
+				<div class="row margenLaterales15 alert  alert-info">
+					  <img class="img-fluid img-thumbnail fotoPersonalComentario" src="assets/img/foto.jpg" />
+						<div class="form-group textAreaComentario">
+							<textarea class="form-control" rows="3" maxlength="140"></textarea>
+						</div>
+						<div class=" clearfix col-md-12">
+						  <button class="btn btn-info float-right">
+								<i class="fa fa-comment" aria-hidden="true"></i>
+								Comentar
+							</button>
+						</div>
+				</div>
+			</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>

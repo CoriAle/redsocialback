@@ -217,7 +217,7 @@ span.psw {
     padding-top: 3px;
     padding-bottom: 3px;
 
- 
+
 }
 .btn-pers:hover{
    border:none;
@@ -327,4 +327,19 @@ span.psw {
 }
 .negro{
   color: black;
+}
+.fotoPersonalComentario{
+  width: 5em;
+  height: 5em;
+}
+.margenLaterales15{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.textAreaComentario{
+  width: 86%;
+  margin-left: 10px;
+}
+.botonComentar{
+  float: right;
 }
