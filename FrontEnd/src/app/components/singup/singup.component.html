@@ -1,5 +1,8 @@
 <div class="card card-outline-primary mb-3 card-singup" >
+
 	<form class="card-block" (ngSubmit)="guardar(form)" #form="ngForm">
+	<h1 class="text-center">¡Regístrate!</h1>
+<hr>
 	  <div class="form-group"  [ngClass] = "{'has-danger': (nombre.errors?.required) && nombre.touched}">
 	    <label for="nombre">Nombre</label>
 	    <input 
