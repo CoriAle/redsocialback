@@ -20,6 +20,7 @@ export class GuardService implements CanActivate {
   		console.log("No está logeado");
   		return false;
   	}
+  	//canActiveLogin(ext: ActivatedRouteSnapshot, state: RouterStateSnapshot)
   }
 
 }

@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Login } from '../interfaces/login.interface';
 import { GLOBAL } from './global';
+import { Usuario } from '../interfaces/usuario.interface';
 
 @Injectable()
 export class LoginService {
@@ -20,7 +21,7 @@ export class LoginService {
   		return this._http.post(this.url +'login', params, {headers: headers})
   					.map(res => res.json());
   }
-  actualizarData(usuario:Login){
+  actualizarData(usuario:Usuario){
     localStorage.setItem("USUARIO", JSON.stringify(usuario));
   }
   isAutenticated():Boolean{

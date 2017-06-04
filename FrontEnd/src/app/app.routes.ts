@@ -11,11 +11,18 @@ const APP_ROUTES: Routes = [
   	canActivate: [GuardService]
 
   },
-  { path: 'seguidores', component: SeguidoresComponent },
-  { path: 'seguidos', component: SeguidosComponent },
+  { path: 'seguidores', 
+  	component: SeguidoresComponent,
+  	canActivate: [GuardService]
+  },
+  { path: 'seguidos', component: SeguidosComponent,
+  	canActivate: [GuardService] 
+  },
 
-  { path: 'login', component: LoginComponent },
-  { path: '**', pathMatch: 'full', redirectTo: 'home' }
+  { path: 'login', component: LoginComponent
+   },
+  { path: '**', pathMatch: 'full', redirectTo: 'home',
+  	canActivate: [GuardService]}
 ];
 
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

@@ -15,6 +15,7 @@ import { SeguidoresService } from './services/seguidores.service';
 import { PerfilusuarioService } from './services/perfilusuario.service';
 import { LoginService } from './services/login.service';
 import { GuardService } from './services/guard.service';
+import { SingupService } from './services/singup.service';
 
 import { MiniPerfilComponent } from './components/shared/mini-perfil/mini-perfil.component';
 import { PerfilpequeComponent } from './components/shared/perfilpeque/perfilpeque.component';
@@ -30,6 +31,7 @@ import { PortadagrandeComponent } from './components/shared/portadagrande/portad
 import { InfoperfilComponent } from './components/shared/infoperfil/infoperfil.component';
 import { SeguidosComponent } from './components/seguidos/seguidos.component';
 import { CantidadletrasPipe } from './pipes/cantidadletras.pipe';
+import { SingupComponent } from './components/singup/singup.component';
 
 
 
@@ -51,7 +53,8 @@ import { CantidadletrasPipe } from './pipes/cantidadletras.pipe';
     PortadagrandeComponent,
     InfoperfilComponent,
     SeguidosComponent,
-    CantidadletrasPipe
+    CantidadletrasPipe,
+    SingupComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,8 @@ import { CantidadletrasPipe } from './pipes/cantidadletras.pipe';
     LoginService,
     SeguidosService,
     SeguidoresService,
-    GuardService
+    GuardService,
+    SingupService
 
   ],
   bootstrap: [AppComponent]
