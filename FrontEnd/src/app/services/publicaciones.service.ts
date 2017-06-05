@@ -93,7 +93,7 @@ interface PublicacionAgregar{
   fechapublicacion:Date;
   usuariocreador:Usuario;
 }
-class clasePublicacoin{
+export class clasePublicacoin{
   comentario:any[];
   contenido:string;
   fechapublicacion:Date;
@@ -104,4 +104,5 @@ class clasePublicacoin{
     this.contenido = contenido;
     this.usuariocreador = user;
   }
+
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PublicacionesService,Comentario} from '../../services/publicaciones.service';
+import { PublicacionesService,Comentario,clasePublicacoin} from '../../services/publicaciones.service';
 import { Publicacion } from '../../interfaces/publicacion.interface';
 import { Usuario } from '../../interfaces/usuario.interface';
 import { NgForm } from '@angular/forms';
@@ -16,8 +16,9 @@ export class PublicacionComponent implements OnInit {
     foto :"",
   };
 	publicaciones:Publicacion[];
-  publiSel:any;
+  publiSel:clasePublicacoin;
   comentario:string;
+  todoComentario:Coment[]=[];
   constructor(private _publicacionesService: PublicacionesService,
           private router:Router,
               private activateRouter:ActivatedRoute
@@ -36,7 +37,8 @@ export class PublicacionComponent implements OnInit {
   }
   verPublicacion(publicacion:any){
     this.publiSel = publicacion;
-    console.log(publicacion);
+    this.todoComentario = this.publiSel.comentario;
+    console.log(this.todoComentario);
     $('#myModal0').modal();
   }
   cerrarModal(){
@@ -57,6 +59,7 @@ export class PublicacionComponent implements OnInit {
           }
           else{
             this.comentario = "";
+
           }
         }
       );
@@ -84,4 +87,13 @@ export interface PublicacionNueva{
   id:number;
   contenido:string;
   foto:string;
+}
+class Coment{
+  contenido:string;
+  fechacomentario: Date;
+  nombre:Usuario;
+  constructor (cont:string,nombre:Usuario){
+    this.contenido = cont;
+    this.nombre= nombre;
+  }
 }

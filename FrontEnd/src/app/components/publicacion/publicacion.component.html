@@ -33,13 +33,18 @@
 <!--inicio de las publicaciones-->
 <div class="puntero" *ngFor="let publicacion of _publicacionesService.publicaciones">
 	<div class="card div-card ">
+
+		<div class="">
+			<img class="img-fluid img-thumbnail fotoPersonalComentario" src="assets/img/foto.jpg" />
+		</div>
+
 		<!--
 		<div  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">-->
-		<div (click)="verPublicacion(publicacion)">
+		<div (click)="verPublicacion(publicacion)" class="col-md-10">
 			  <div class="card-block">
 			    <h4 class="card-title">{{publicacion.usuariocreador.nombre}}</h4>
 			    <p class="card-text">{{publicacion.contenido}}</p>
-			    <p class="card-text"><small class="text-muted">{{publicacion.fechapublicacion}}</small></p>
+			    <p class="card-text"><small class="text-muted">{{publicacion.fechapublicacion | date: 'MM/dd/yyyy '}}</small></p>
 			  </div>
 
 			  <img [src]="publicacion.foto"  *ngIf="publicacion?.foto != '' && publicacion.foto" class="img-item"/>
@@ -80,7 +85,7 @@
 				{{publiSel?.contenido}}
 				<img [src]="publiSel?.foto"  *ngIf="publiSel?.foto != '' && publiSel?.foto" class="img-item"/>
 
-				<p class="card-text"><small class="text-muted">{{publiSel?.fechapublicacion}}</small></p>
+				<p class="card-text"><small class="text-muted">{{publiSel?.fechapublicacion | date: 'MM/dd/yyyy '}}</small></p>
 				<div class="row" >
 					<div class="col-md-3 text-center">
 						<button class="btn-block  btn btn-link btn-publicacion-like">
@@ -129,10 +134,13 @@
 				</div>
 			</div>
       <div class="modal-footer">
-				<p *ngFor="let item of publiSel?.comentario">
+				<div *ngFor="let item of todoComentario">
 					{{item.contenido}}
-
-				</p>
+					{{item.fechacomentario | date: 'MM/dd/yyyy '}}
+					{{item.nombre.correo}}
+					{{item.nombre.nombre}}
+				</div>
+				<hr />
       </div>
     </div>
   </div>
