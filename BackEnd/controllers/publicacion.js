@@ -230,7 +230,7 @@ function uploadFotos(req, res)
 				}
 				else
 				{
-				res.status(200).send({actualizado:publicacionUpdate});				
+				res.status(500).send({actualizado:publicacionUpdate});				
 				}	
 			}
 		});
