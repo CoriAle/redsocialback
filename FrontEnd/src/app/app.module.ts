@@ -34,6 +34,7 @@ import { SeguidosComponent } from './components/seguidos/seguidos.component';
 import { CantidadletrasPipe } from './pipes/cantidadletras.pipe';
 import { SingupComponent } from './components/singup/singup.component';
 import { Registro2Component } from './components/registro2/registro2.component';
+import { CarrouselComponent } from './components/carrousel/carrousel.component';
 
 
 
@@ -57,7 +58,8 @@ import { Registro2Component } from './components/registro2/registro2.component';
     SeguidosComponent,
     CantidadletrasPipe,
     SingupComponent,
-    Registro2Component
+    Registro2Component,
+    CarrouselComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ export class SingupComponent implements OnInit {
 		correo: "",
 		password: "",
 		fotoperfil: "",
-		portada: "",
+		fotoportada: "",
 		}
 	errorMessage;
   constructor(	private _registro: SingupService,
@@ -40,7 +40,7 @@ export class SingupComponent implements OnInit {
             {
               form.reset();
               this.usuario = response.usuario;
-              this._router.navigate(['/home']);
+              this._router.navigate(['/registro']);
               console.log(this.usuario);
               this._login.actualizarData(this.usuario);
             }

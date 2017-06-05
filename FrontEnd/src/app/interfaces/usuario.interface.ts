@@ -7,7 +7,7 @@ export interface Usuario {
 	__v?: number;
 	_id?: number;
 	fotoperfil?: string;
-	portada?: string;
-	fechaNac?: Date;
+	fotoportada?: string;
+	cumpleanios?: Date;
 	descripcion?: string;
 }

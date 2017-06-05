@@ -11,14 +11,17 @@ import { NgForm } from '@angular/forms';
 export class Registro2Component implements OnInit {
 	
 	public filesToUpload: Array<File>;
-  errorMessage;
  	public resultUpload;
+     public filesToUpload2: Array<File>;
+
+    errorMessage;
  	usuario:Usuario = {
 		nombre: "",
 		correo: "",
 		password: "",
 		fechaUnion: new Date(),
 		descripcion: "",
+    cumpleanios:new Date(),
 		_id: -1
 	}
 
@@ -62,12 +65,24 @@ export class Registro2Component implements OnInit {
                       (result)=>{
                           this.resultUpload = result;
                           this.usuario.fotoperfil = this.resultUpload.filename;
-                          console.log("Luego de subir", this.url+'upload-image-perfil/'+this.usuario._id);
-                          console.log(this.usuario._id, "este2");
+                          /**/ this._router.navigate(['/home']);
+
+                            this.makeFileRequest(this.url+'upload-portada/'+this.usuario._id,[], this.filesToUpload2)
+                              .then(
+                              (result)=>{
+                                  this.resultUpload = result;
+                                  this.usuario.fotoportada = this.resultUpload.filename;
+                                  localStorage.USUARIO = this.usuario;
+                                  },
+                                  (error)=>{
+                                      console.log(error);
+                                  })
+
+                          /**/
+                    
                       },
                       (error)=>{
                           console.log(error);
-                          console.log("me fui")
                       })
              
             }
@@ -85,7 +100,9 @@ export class Registro2Component implements OnInit {
   }
 
 
-
+fileChangeEvent2(fileInput: any){
+    this.filesToUpload2 = <Array<File>> fileInput.target.files;
+  }
   
   fileChangeEvent(fileInput: any){
   	this.filesToUpload = <Array<File>> fileInput.target.files;
