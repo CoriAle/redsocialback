@@ -1,4 +1,5 @@
-<form  (ngSubmit) = "guardar(form)"  #form="ngForm">
+<div class="container top-30">
+  <form  (ngSubmit) = "guardar(form)"  #form="ngForm">
   <div class="form-group row">
     <label for="example-date-input" class="col-2 col-form-label">Date</label>
     <div class="col-10">
@@ -6,9 +7,9 @@
               class="form-control" 
               type="date" 
               value="2011-08-19" 
-              #fechaNac = "ngModel"
-              name = "fechaNac"
-              [(ngModel)] = "usuario.fechaNac"
+              #cumpleanios = "ngModel"
+              name = "cumpleanios"
+              [(ngModel)] = "usuario.cumpleanios"
               required>
     </div>
   </div>
@@ -33,16 +34,16 @@
           required
           (change) ="fileChangeEvent($event)" >
   </div>
-    <div class="form-group">
+   <div class="form-group">
     <label for="exampleInputFile">File input</label>
     <input 
           type="file" 
           class="form-control-file" 
-          aria-describedby="fileHelp"  
-          #portada = "ngModel"
-          name = "portada"
-          [(ngModel)] = "usuario.portada"
-          required>>
+          aria-describedby="fileHelp"
+          required
+          (change) ="fileChangeEvent2($event)" >
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+</div>

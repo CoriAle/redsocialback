@@ -15,7 +15,7 @@ export class SingupComponent implements OnInit {
 		correo: "",
 		password: "",
 		fotoperfil: "",
-		portada: "",
+		fotoportada: "",
 		}
 	errorMessage;
   constructor(	private _registro: SingupService,
