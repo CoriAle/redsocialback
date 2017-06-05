@@ -1,7 +1,7 @@
 'use strict'
 
-var Usuario = require('../models/usuario');
 var path=require('path');
+var Usuario = require('../models/usuario');
 var Publicacion=require('../models/publicacion');
 function postLogin(req, res)
 {
@@ -94,8 +94,8 @@ function saveUsuarios(req, res){
 	usuario.correo = params.correo;
 	usuario.descripcion = params.descripcion;
 	usuario.cumpleanios = params.cumpleanios;
-	usuario.fotoperfil = params.fotoperfil;
-	usuario.fotoportada = params.fotoportada;
+	usuario.fotoperfil = "";
+	usuario.fotoportada = "";
 	usuario.password = params.password;
 
 	usuario.save((err, usuarioStored)=>
@@ -160,7 +160,7 @@ function deleteUsuario(req, res) {
 }
 function uploadPerfil(req, res)
 {
-	var usuarioId=req.params.id;
+	var UsuarioId=req.params.id;
 	var filename='No subido..';
 
 	if(req.files!=={})//con esto para ficheros entrados por http
@@ -170,7 +170,7 @@ function uploadPerfil(req, res)
 		var file_split = file_path.split('\\');
 		var file_name = file_split[1];
 		
-		Publicacion.findByIdAndUpdate(usuarioId, {fotoperfil:file_name}, (err, fotoPerfilActualizada)=>
+		Usuario.findByIdAndUpdate(UsuarioId, {fotoperfil:file_name}, (err, usuarioUpdate)=>
 		{
 			if(err)
 			{
@@ -178,13 +178,13 @@ function uploadPerfil(req, res)
 			}
 			else
 			{
-				if(!fotoPerfilActualizada)
+				if(!usuarioUpdate)
 				{
 					res.status(204).send({message:'No se ha actualizado la publicación'});
 				}
 				else
 				{
-				res.status(200).send({actualizado:fotoPerfilActualizada});				
+				res.status(200).send({actualizado:usuarioUpdate});				
 				}	
 			}
 		});
@@ -209,7 +209,7 @@ function uploadPortada(req, res)
 		var file_split = file_path.split('\\');
 		var file_name = file_split[1];
 		
-		Publicacion.findByIdAndUpdate(usuarioId, {fotoportada:file_name}, (err, fotoPortadaActualizada)=>
+		Usuario.findByIdAndUpdate(usuarioId, {fotoperfil:file_name}, (err, usuarioUpdate)=>
 		{
 			if(err)
 			{
@@ -217,13 +217,13 @@ function uploadPortada(req, res)
 			}
 			else
 			{
-				if(!fotoPortadaActualizada)
+				if(!usuarioUpdate)
 				{
 					res.status(204).send({message:'No se ha actualizado la publicación'});
 				}
 				else
 				{
-				res.status(200).send({actualizado: fotoPortadaActualizada});				
+				res.status(200).send({actualizado: usuarioUpdate});				
 				}	
 			}
 		});
