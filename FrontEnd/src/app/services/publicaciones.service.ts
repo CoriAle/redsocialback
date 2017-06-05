@@ -61,8 +61,20 @@ export class PublicacionesService {
     return this._http.post(this.url +'publicacion', params, {headers: headers})
       .map(res =>res.json() );
   }
+  addComentario(coment:Comentario,id:number){
+    let json = JSON.stringify(coment);
+    let params = json;
+
+    let headers = new Headers({'Content-Type': 'application/json'});
+    return this._http.post(this.url +'comentario/'+id, params, {headers: headers})
+      .map(res =>res.json() );
+  }
 }
 
+export interface Comentario{
+  nombre:number;
+  contenido:string;
+}
 interface PublicacionNueva{
   id:number;
   contenido:string;
