@@ -209,7 +209,7 @@ function uploadPortada(req, res)
 		var file_split = file_path.split('\\');
 		var file_name = file_split[1];
 		
-		Usuario.findByIdAndUpdate(usuarioId, {fotoperfil:file_name}, (err, usuarioUpdate)=>
+		Usuario.findByIdAndUpdate(usuarioId, {fotoportada:file_name}, (err, usuarioUpdate)=>
 		{
 			if(err)
 			{
