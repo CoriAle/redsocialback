@@ -1,4 +1,4 @@
-<form #formImage="ngForm" (ngSubmit) = "onSubmit()">
+<form  (ngSubmit) = "guardar(form)"  #form="ngForm">
   <div class="form-group row">
     <label for="example-date-input" class="col-2 col-form-label">Date</label>
     <div class="col-10">
@@ -18,9 +18,9 @@
               class="form-control" 
               id="exampleTextarea" 
               rows="3"
-              #desc = "ngModel"
-              name = "desc"
-              [(ngModel)] = "usuario.desc"
+              #descripcion = "ngModel"
+              name = "descripcion"
+              [(ngModel)] = "usuario.descripcion"
               required></textarea>
   </div>
   <div class="form-group">
@@ -29,10 +29,9 @@
           type="file" 
           class="form-control-file" 
           aria-describedby="fileHelp"
-          #foto = "ngModel"
-          name = "foto"
-          [(ngModel)] = "usuario.foto"
-          required>
+        
+          required
+          (change) ="fileChangeEvent($event)" >
   </div>
     <div class="form-group">
     <label for="exampleInputFile">File input</label>
