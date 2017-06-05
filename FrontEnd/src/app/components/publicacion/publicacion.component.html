@@ -129,6 +129,10 @@
 				</div>
 			</div>
       <div class="modal-footer">
+				<p *ngFor="let item of publiSel?.comentario">
+					{{item.contenido}}
+
+				</p>
       </div>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Publicacion } from '../interfaces/publicacion.interface';
+import { Usuario } from '../interfaces/usuario.interface';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { GLOBAL } from './global';
@@ -58,6 +59,12 @@ export class PublicacionesService {
     let json = JSON.stringify(publi);
     let params = json;
     let headers = new Headers({'Content-Type': 'application/json'});
+
+
+    let user : Usuario = JSON.parse(localStorage.getItem("USUARIO"));
+    let nuevo = new clasePublicacoin(null,publi.contenido,user);
+      console.log(nuevo);
+    this.publicaciones.unshift(nuevo);
     return this._http.post(this.url +'publicacion', params, {headers: headers})
       .map(res =>res.json() );
   }
@@ -79,4 +86,22 @@ interface PublicacionNueva{
   id:number;
   contenido:string;
   foto:string;
+}
+interface PublicacionAgregar{
+  comentario:any[];
+  contenido:string;
+  fechapublicacion:Date;
+  usuariocreador:Usuario;
+}
+class clasePublicacoin{
+  comentario:any[];
+  contenido:string;
+  fechapublicacion:Date;
+  usuariocreador:Usuario;
+  constructor(comentario:any[], contenido:string, user:Usuario){
+    this.comentario = comentario;
+    this.fechapublicacion = new Date();
+    this.contenido = contenido;
+    this.usuariocreador = user;
+  }
 }
