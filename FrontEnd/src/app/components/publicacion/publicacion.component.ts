@@ -50,6 +50,8 @@ export class PublicacionComponent implements OnInit {
     let coment:Comentario={nombre:0,contenido:""};
       coment.nombre = user._id;
       coment.contenido = this.comentario;
+      let nuevoComentario = new Coment(this.comentario,user);
+      this.todoComentario.unshift(nuevoComentario);
       console.log(publi);
       this._publicacionesService.addComentario(coment,publi).subscribe(
         response => {
@@ -95,5 +97,6 @@ class Coment{
   constructor (cont:string,nombre:Usuario){
     this.contenido = cont;
     this.nombre= nombre;
+    this.fechacomentario= new Date();
   }
 }
