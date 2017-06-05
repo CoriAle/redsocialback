@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate} from '@angular/router';
 import { Usuario } from '../../interfaces/usuario.interface';
 import { Registro2Service } from '../../services/registro2.service';
+import { GLOBAL } from '../../services/global';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-registro2',
   templateUrl: './registro2.component.html'
@@ -9,47 +11,88 @@ import { Registro2Service } from '../../services/registro2.service';
 export class Registro2Component implements OnInit {
 	
 	public filesToUpload: Array<File>;
+  errorMessage;
  	public resultUpload;
  	usuario:Usuario = {
 		nombre: "",
 		correo: "",
 		password: "",
 		fechaUnion: new Date(),
-		desc: "",
+		descripcion: "",
 		_id: -1
 	}
+
+    public url: string;
   
   constructor(
   				private _route: ActivatedRoute,
   				private  _router: Router,
   				private _registro: Registro2Service
-  				) { }
+  				) {
+                this.url = GLOBAL.url; 
+            }
 
   ngOnInit() {
-  				this.usuario.nombre = localStorage.USUARIO.nombre;
-  				this.usuario.correo = localStorage.USUARIO.correo;
-  				this.usuario.password = localStorage.USUARIO.password;
-  				this.usuario._id = localStorage.USUARIO._id;
+     let usu:Usuario= JSON.parse(localStorage.getItem("USUARIO"));
+  				this.usuario.nombre = usu.nombre;
+  				this.usuario.correo = usu.correo;
+  				this.usuario.password = usu.password;
+  				this.usuario._id =usu._id;
   }
 
-  onSubmit(){
-  		//this._route.params.forEach()
-  		this._registro.AddImage(this.usuario.foto, this.usuario._id).subscribe(
-  				response=>{
-  					this.usuario.foto = response;
-  				}
-  			)
 
 
+  guardar(form: NgForm){
+    this._registro.AddImage(this.usuario).subscribe(
+        response=>{
+
+
+            if(!response.usuario)
+            {
+                alert("Usuario o contraseña incorrectos");
+            }
+            else
+            {
+              form.reset();
+              this.usuario = response.usuario;
+              console.log(response.usuario);
+         
+              this.makeFileRequest(this.url+'upload-image-perfil/'+this.usuario._id,[], this.filesToUpload)
+                      .then(
+                      (result)=>{
+                          this.resultUpload = result;
+                          this.usuario.fotoperfil = this.resultUpload.filename;
+                          console.log("Luego de subir", this.url+'upload-image-perfil/'+this.usuario._id);
+                          console.log(this.usuario._id, "este2");
+                      },
+                      (error)=>{
+                          console.log(error);
+                          console.log("me fui")
+                      })
+             
+            }
+            console.log(response);
+
+
+        },
+        error=>{
+          this.errorMessage = <any>error;
+          if(this.errorMessage !=null){
+            console.log(this.errorMessage);
+          }
+        }
+      );
   }
+
+
+
   
   fileChangeEvent(fileInput: any){
   	this.filesToUpload = <Array<File>> fileInput.target.files;
-
   }
   makeFileRequest(url: string, params: Array<string>, files: Array<File>){
   		return new Promise(function(resolve, reject){
-  			var formData:  any = new formData();
+  			var formData:  any = new FormData();
   			var xhr = new XMLHttpRequest();
   			for (var i = 0; i < files.length; i++) {
   				formData.append('image', files[i], files[i].name);
@@ -57,7 +100,7 @@ export class Registro2Component implements OnInit {
 
   			xhr.onreadystatechange = function(){
   				if(xhr.readyState == 4 ){
-  					if(xhr.status == 2000){
+  					if(xhr.status == 200){
   						resolve(JSON.parse(xhr.response));
   					}
   					else{
