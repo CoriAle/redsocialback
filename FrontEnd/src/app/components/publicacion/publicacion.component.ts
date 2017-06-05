@@ -22,28 +22,27 @@ export class PublicacionComponent implements OnInit {
               private activateRouter:ActivatedRoute
   ) {
 
-
+    this._publicacionesService.getTodasPublicaciones().subscribe(
+      data =>{
+        console.log(data);
+      });
 
    }
 
   ngOnInit() {
-    this._publicacionesService.getTodasPublicaciones().subscribe(
-      result=>{
-        console.log(result);
-      }
-    );
+
 
   }
   verPublicacion(publicacion:any){
     this.publiSel = publicacion;
-    console.log(this.publiSel);
-    $('#myModal').modal();
+    console.log(publicacion);
+    $('#myModal0').modal();
   }
   cerrarModal(){
-   $('#myModal').modal('hide');
+   $('#myModal0').modal('hide');
     this.publiSel = null;
   }
-  comentar(forma: NgForm){
+  public comentar(forma: NgForm){
     let user : Usuario = JSON.parse(localStorage.getItem("USUARIO"));
     this.publi.id = user._id;
 
@@ -62,7 +61,7 @@ export class PublicacionComponent implements OnInit {
   }//fin de comentar
 
 }
-interface PublicacionNueva{
+export interface PublicacionNueva{
   id:number;
   contenido:string;
   foto:string;

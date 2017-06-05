@@ -17,7 +17,7 @@
       ></textarea>
     </div>
     <div class=" clearfix col-md-12">
-      <button class="btn btn-info float-right" type="submit">
+      <button class="btn btn-info float-right" type="submit" [disabled] = "!forma.valid">
         <i class="fa fa-comment" aria-hidden="true"></i>
         Publicar
       </button>
@@ -35,18 +35,18 @@
 </div>
 
 <!--inicio de las publicaciones-->
-<div class="puntero" *ngFor="let publicacion of publicaciones">
+<div class="puntero" *ngFor="let publicacion of _publicacionesService.publicaciones">
 	<div class="card div-card ">
 		<!--
 		<div  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">-->
 		<div (click)="verPublicacion(publicacion)">
 			  <div class="card-block">
-			    <h4 class="card-title">{{publicacion.user}}</h4>
+			    <h4 class="card-title">{{publicacion.usuariocreador.nombre}}</h4>
 			    <p class="card-text">{{publicacion.contenido}}</p>
-			    <p class="card-text"><small class="text-muted">{{publicacion.fecha}}</small></p>
+			    <p class="card-text"><small class="text-muted">{{publicacion.fechapublicacion}}</small></p>
 			  </div>
 
-			  <img [src]="publicacion.foto"  *ngIf="publicacion.foto != ''" class="img-item"/>
+			  <img [src]="publicacion.foto"  *ngIf="publicacion?.foto != '' && publicacion.foto" class="img-item"/>
 		 </div>
 		<div class="row" >
 			<div class="col-md-3 text-center">
@@ -71,7 +71,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="myModal0" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -82,7 +82,7 @@
       </div>
       <div class="modal-body">
 				{{publiSel?.contenido}}
-				<img [src]="publiSel?.foto"  *ngIf="publiSel?.foto != ''" class="img-item"/>
+				<img [src]="publiSel?.foto"  *ngIf="publiSel?.foto != '' " class="img-item"/>
 
 				<p class="card-text"><small class="text-muted">{{publiSel?.fecha}}</small></p>
 				<div class="row" >
