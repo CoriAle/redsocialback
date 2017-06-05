@@ -42,8 +42,7 @@ export class LoginComponent  {
               forma.pristine;
               this.user = response.usuario;
                 this.closeModal();
-
-              this._router.navigate(['/home']);
+                 this._router.navigate(['/home']);
               this._login.actualizarData(this.user);
 
 

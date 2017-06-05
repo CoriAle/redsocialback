@@ -40,7 +40,7 @@ export class SingupComponent implements OnInit {
             {
               form.reset();
               this.usuario = response.usuario;
-              this._router.navigate(['/home']);
+              this._router.navigate(['/registro']);
               console.log(this.usuario);
               this._login.actualizarData(this.usuario);
             }

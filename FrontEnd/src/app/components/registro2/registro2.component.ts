@@ -65,13 +65,14 @@ export class Registro2Component implements OnInit {
                       (result)=>{
                           this.resultUpload = result;
                           this.usuario.fotoperfil = this.resultUpload.filename;
-                          /**/
+                          /**/ this._router.navigate(['/home']);
 
                             this.makeFileRequest(this.url+'upload-portada/'+this.usuario._id,[], this.filesToUpload2)
                               .then(
                               (result)=>{
                                   this.resultUpload = result;
                                   this.usuario.fotoportada = this.resultUpload.filename;
+                                  localStorage.USUARIO = this.usuario;
                                   },
                                   (error)=>{
                                       console.log(error);
