@@ -213,17 +213,17 @@ function uploadPortada(req, res)
 		{
 			if(err)
 			{
-				res.status(500).send({message: 'Error en la petición'});
+				res.status(202).send({message: 'Error en la petición'});
 			}
 			else
 			{
 				if(!usuarioUpdate)
 				{
-					res.status(500).send({message:'No se ha actualizado la publicación'});
+					res.status(204).send({message:'No se ha actualizado la publicación'});
 				}
 				else
 				{
-				res.status(500).send({actualizado: usuarioUpdate});				
+				res.status(200).send({actualizado: usuarioUpdate});				
 				}	
 			}
 		});
